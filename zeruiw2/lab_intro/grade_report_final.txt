@@ -1,0 +1,22 @@
+Grading r3010 by zeruiw2 committed on Sun Jan 22 23:21:30 CST 2017
+Monad Autograder
+Testing lab_intro at 2017-01-23 00:26:57
+
+"Microsoft has a new version out, Windows XP, which according to everybody is the 'most reliable Windows ever.' To me, this is like saying that asparagus is 'the most articulate vegetable ever.'" ~ Dave Barry
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testBrighten  . [33 pts] - passed
+testCrosshairs  [33 pts] - passed
+testBlendImages [34 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
