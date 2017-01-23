@@ -53,9 +53,18 @@ PNG drawCrosshairs(PNG original, int centerX, int centerY, RGBAPixel color)
 PNG brighten(PNG original, int amount)
 {
     /// You can assume amount is positive.
-    for (size_t yi = 0; yi < original.height(); yi++) {
+    for (size_t yi   =0; yi < original.height(); yi++) {
         for (size_t xi = 0; xi < original.width(); xi++) {
-            /// Your code here!
+          if(original(xi,yi)-> red + amount>255)
+          original(xi,yi)-> red=255;
+          else original(xi,yi) -> red += amount;
+       if(original(xi,yi)->blue+amount>255)
+         original(xi,yi)-> blue =255;
+         else  original (xi,yi) -> blue += amount ;
+        if(original(xi,yi)->green + amount >255)
+          original (xi,yi)->green =255;
+        else original(xi,yi) -> green += amount;
+         /// Your code here!
         }
     }
     return original;
@@ -73,6 +82,17 @@ PNG brighten(PNG original, int amount)
  */
 PNG blendImages(PNG firstImage, PNG secondImage)
 {
+
+  secondImage.resize(firstImage.height(), firstImage.width());
+for (size_t yi=0 ; yi<firstImage.height(); yi++){
+  for (size_t xi=0; xi<firstImage.width(); xi++){
+    firstImage(xi,yi)-> red = (firstImage(xi,yi)-> red + secondImage(xi,yi)->red)/2;
+      firstImage(xi,yi)-> blue = (firstImage(xi,yi)-> blue + secondImage(xi,yi)->blue)/2;
+        firstImage(xi,yi)-> green = (firstImage(xi,yi)-> green + secondImage(xi,yi)->green)/2;
+
+    }
+}
+
     /// Your code here!
     return firstImage;
 }
