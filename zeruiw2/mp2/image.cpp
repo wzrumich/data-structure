@@ -1,6 +1,8 @@
 #include <iostream>
 #include "image.h"
-
+#include "png.h"
+using namespace std;
+#include <cstdint>
 void Image :: flipleft(){
      int width = this->width();
      int height = this->height();
