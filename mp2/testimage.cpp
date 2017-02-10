@@ -9,9 +9,10 @@
  *   Author: Jonathan Ray
  *   Date: 02 Feb 2007
  */
-
+#include <iostream>
 #include "image.h"
-
+#include "png.h"
+#include <cstdint>
 int main()
 {
     Image* myImage = new Image();

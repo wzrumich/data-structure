@@ -10,23 +10,32 @@
  *   Date: 02 Feb 2007
  */
 
+#include <iostream>
 #include "image.h"
 #include "scene.h"
-
+#include "rgbapixel.h"
+#include "png.h"
+using namespace std;
 int main()
 {
     Scene* set = new Scene(5);
+
     set->addpicture("in_01.png", 0, 0, 0);
     set->addpicture("in_02.png", 1, 60, 60);
+
     set->addpicture("in_03.png", 2, 150, 0);
+
     Image result = set->drawscene();
+
     result.writeToFile("scene.png");
 
     set->changelayer(1, 3);
+
     result = set->drawscene();
     result.writeToFile("scene2.png");
 
     set->translate(0, 50, 50);
+
     result = set->drawscene();
     result.writeToFile("scene3.png");
 
@@ -41,6 +50,7 @@ int main()
     Scene* sc = new Scene(*set);
     sc->getpicture(0)->flipleft();
     result = set->drawscene();
+      cout<<"reach line 20"<<endl;
     result.writeToFile("scene6.png"); // scene 5 and scene 6 should be the same
     result = sc->drawscene();
     result.writeToFile("scene7.png");
