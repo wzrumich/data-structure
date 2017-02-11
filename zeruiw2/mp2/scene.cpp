@@ -37,23 +37,24 @@ max=other.max;
 x=new int[max];
 y=new int[max];
 layers=new Image*[max];
-for(int i=0; i<max; i++){
-  layers[i]=NULL;
-  x[i]=0;
-  y[i]=0;
-}
+
 for(int i=0; i<max; i++){
   if(other.layers[i]!=NULL){
   this->layers[i]=new Image(*(other.layers[i]));
   x[i]=other.x[i];
-  y[i]=other.y[i];
+  y[i]=other.y[i];}
+  else{
+    layers[i]=NULL;
+    x[i]=0;
+    y[i]=0;
+  }
 }
 }
-}
+
 void Scene::clear(){
 
 for(int i=0; i<max ; i++){
-  if(layers!=NULL){
+  if(layers[i]!=NULL){
     delete layers[i];
     layers[i]=NULL;
   }
@@ -76,25 +77,66 @@ const Scene& Scene::operator=(const Scene & source){
   return *this;
 }
 void Scene::changemaxlayers(int newmax){
-if(max<newmax){
-Image ** change = new Image*[newmax];
-  for(int i=0; i<newmax ; i++){
-    if(i<max)
-change[i]=layers[i];
-else if (i>=max&&i<newmax)
-change[i]=NULL;
+
+  if(max>newmax){
+    for(int i=newmax-1; i<max ; i++){
+      if(layers[i]!=NULL){
+  cout<< "invalid newmax"<<endl;
+  return;}
   }
-}
-if(max==newmax){
+  }
+  if(max==newmax){
+
+      return;
+  }
+
   Image ** change = new Image*[newmax];
-    for(int i=0; i<newmax ; i++){
-  change[i]=layers[i];
+  int * xnew=new int[newmax];
+  int * ynew=new int[newmax];
+
+for(int j=0; j<newmax; j++){
+  change[j]=NULL;
+  xnew[j]=0;
+  ynew[j]=0;
 }
+
+
+  for(int i=0; i<max; i++){
+  if(layers[i]!=NULL){
+(change[i])=(this->layers[i]);
+xnew[i]=x[i];
+ynew[i]=y[i];}
+
 }
-if(max>newmax)
-cout<<
-"invalid newmax"<<endl;
+
+
+for(int i=0; i<max ; i++){
+  if(layers[i]!=NULL){
+
+    layers[i]=NULL;
+  }
+  }
+
+
+  delete[] layers;
+  delete[] x;
+  delete[] y;
+  max=newmax;
+ layers=change;
+ change=NULL;
+ x=xnew;
+ xnew=NULL;
+ y=ynew;
+ ynew=NULL;
+
+
+
+
 }
+
+
+
+
 void Scene::addpicture(const char* FileName, int index, int xcoo, int ycoo){
 
 if(index>max){
@@ -119,17 +161,19 @@ void Scene::changelayer(int index, int newindex){
 
      }
      else{
-     Image* mid=new Image;
-     mid = layers[index];
-     layers[index]=layers[newindex];
-     layers[newindex]=mid;
-     int midx=x[index];
-     x[index]=x[newindex];
-     x[newindex]=midx;
-     int midy=y[index];
-     y[index]=y[newindex];
-     y[newindex]=midy;
+       if(layers[newindex]!=NULL){
+         delete layers[newindex];
+         layers[newindex]=NULL;
+       }
+  layers[newindex]=layers[index];
+  x[newindex]=x[index];
+  y[newindex]=y[index];
+  layers[index]=NULL;
+  x[index]=0;
+  y[index]=0;
    }
+
+
 }
 
 
@@ -145,12 +189,14 @@ else
 }
 
 void Scene::deletepicture(int index){
-  if(index<0||index>max||layers[index]==NULL){
+  if(index<0||index>max-1||layers[index]==NULL){
     cout<<"invalid index"<<endl;
   }
   else{
   delete layers[index];
   layers[index]=NULL;
+  x[index]=0;
+  y[index]=0;
 }
   }
 
