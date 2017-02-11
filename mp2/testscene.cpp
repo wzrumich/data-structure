@@ -55,6 +55,14 @@ int main()
     result = sc->drawscene();
     result.writeToFile("scene7.png");
 
+    sc->changemaxlayers(2);
+    cout<<"right max"<<endl;
+    sc->changemaxlayers(6);
+    result=sc->drawscene();
+    result.writeToFile("mytest1.png");
+    sc->changemaxlayers(10);
+    result=sc->drawscene();
+    result.writeToFile("mytest2.png");
     delete set;
     set = new Scene(5);
     *set = *sc;
