@@ -1,0 +1,323 @@
+Grading r13704 by zeruiw2 committed on Fri Feb 10 20:12:53 CST 2017
+Monad Autograder
+Testing mp2 at 2017-02-11 00:41:15
+
+"Anything that can go wrong will go wrong." ~ Murphy's Law
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+InvertColorsEven . . . . . . . . . [8 pts] - passed
+FlipLeftEven . . . . . . . . . . . [4 pts] - passed
+FlipLeftOdd  . . . . . . . . . . . [4 pts] - passed
+AdjustBrightnessEven . . . . . . . [3 pts] - passed
+AdjustBrightnessEven2  . . . . . . [3 pts] - passed
+AdjustBrightnessEven3  . . . . . . [3 pts] - passed
+ImageMakefile  . . . . . . . . . . [5 pts] - passed
+Valgrind1 (asan) . . . . . . . . . [5 pts] - passed
+AddPictureValidIndex . . . . . . . [2 pts] - passed
+AddPictureInvalidIndex . . . . . . [2 pts] - FAILED: Aborted
+ImageAssignmentOperator  . . . . . [2 pts] - passed
+SceneGetPictureInvalidIndex  . . . [2 pts] - FAILED: unit_tests.cpp:120: Assertion (NULL == image) failed
+SceneChangeMaxLayersLarger . . . . [2 pts] - passed
+SceneChangeMaxLayersSmaller (asan) [1 pts] - FAILED: Memory errors detected by ASAN
+SceneChangeMaxLayersInvalidChange  [2 pts] - passed
+SceneCopyCtor  . . . . . . . . . . [2 pts] - passed
+SceneCopyCtor2 . . . . . . . . . . [2 pts] - passed
+SceneAssignmentOperator  . . . . . [2 pts] - passed
+SceneAssignmentOperator2 . . . . . [2 pts] - passed
+SceneChangeLayer . . . . . . . . . [2 pts] - passed
+SceneChangeLayerInvalid  . . . . . [2 pts] - FAILED: Segmentation fault
+SceneDrawScene . . . . . . . . . . [3 pts] - passed
+SceneDrawScene2  . . . . . . . . . [3 pts] - passed
+SceneDrawScene3  . . . . . . . . . [3 pts] - passed
+SceneDrawScene4  . . . . . . . . . [3 pts] - FAILED: Segmentation fault
+SceneDrawSceneChangeLayer  . . . . [2 pts] - passed
+SceneDrawSceneDeletePicture  . . . [2 pts] - passed
+SceneDrawSceneTranslate  . . . . . [2 pts] - passed
+SceneDrawSceneTranslate2 . . . . . [2 pts] - passed
+SceneTranslateInvalid  . . . . . . [2 pts] - FAILED: Aborted
+SceneTranslateInvalid2 . . . . . . [1 pts] - passed
+SceneDeletePictureInvalid  . . . . [2 pts] - passed
+Valgrind2 (asan) . . . . . . . . . [5 pts] - passed
+Valgrind3 (asan) . . . . . . . . . [5 pts] - passed
+SceneMakefile  . . . . . . . . . . [5 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 88
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+AddPictureInvalidIndex [2 points]
+Result: FAILED: Aborted
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+*** Error in `./proxy': free(): invalid next size (fast): 0x0000000000837280 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7c503)[0x7fc35b87d503]
+./proxy[0x4519b4]
+./proxy[0x4535d1]
+./proxy[0x44fda5]
+./proxy[0x44fcc1]
+./proxy[0x4490ab]
+./proxy[0x44b4c6]
+./proxy[0x41611d]
+./proxy[0x411d49]
+./proxy[0x40fa30]
+./proxy[0x415ef6]
+./proxy[0x411201]
+./proxy[0x40d2e5]
+./proxy[0x40cadb]
+./proxy[0x40c2c9]
+./proxy[0x40bc03]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fc35b822b35]
+./proxy[0x40a854]
+======= Memory map: ========
+00400000-004ae000 r-xp 00000000 00:12 2196536249                         /dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy
+006ad000-006af000 r--p 000ad000 00:12 2196536249                         /dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy
+006af000-006b0000 rw-p 000af000 00:12 2196536249                         /dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy
+00836000-00857000 rw-p 00000000 00:00 0                                  [heap]
+7fc354000000-7fc354021000 rw-p 00000000 00:00 0 
+7fc354021000-7fc358000000 ---p 00000000 00:00 0 
+7fc35b3e7000-7fc35b3e9000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b3e9000-7fc35b5e9000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b5e9000-7fc35b5ea000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b5ea000-7fc35b5eb000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b5eb000-7fc35b600000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b600000-7fc35b7ff000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b7ff000-7fc35b800000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b800000-7fc35b801000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b801000-7fc35b9b7000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35b9b7000-7fc35bbb7000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35bbb7000-7fc35bbbb000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35bbbb000-7fc35bbbd000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35bbbd000-7fc35bbc2000 rw-p 00000000 00:00 0 
+7fc35bbc2000-7fc35bbd7000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bbd7000-7fc35bdd6000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bdd6000-7fc35bdd7000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bdd7000-7fc35bdd8000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bdd8000-7fc35bed8000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35bed8000-7fc35c0d8000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35c0d8000-7fc35c0d9000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35c0d9000-7fc35c0da000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35c0da000-7fc35c1e5000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fc35c1e5000-7fc35c3e5000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fc35c3e5000-7fc35c3ec000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fc35c3ec000-7fc35c3ef000 rw-p 00000000 00:00 0 
+7fc35c3ef000-7fc35c418000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c418000-7fc35c618000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c618000-7fc35c619000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c619000-7fc35c61a000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c61a000-7fc35c621000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c621000-7fc35c820000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c820000-7fc35c821000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c821000-7fc35c822000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c822000-7fc35c839000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35c839000-7fc35ca38000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35ca38000-7fc35ca39000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35ca39000-7fc35ca3a000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35ca3a000-7fc35ca3e000 rw-p 00000000 00:00 0 
+7fc35ca3e000-7fc35ca5e000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fc35cc3a000-7fc35cc40000 rw-p 00000000 00:00 0 
+7fc35cc5a000-7fc35cc5b000 rw-p 00000000 00:00 0 
+7fc35cc5b000-7fc35cc5d000 rw-p 00000000 00:00 0 
+7fc35cc5d000-7fc35cc5e000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fc35cc5e000-7fc35cc5f000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fc35cc5f000-7fc35cc60000 rw-p 00000000 00:00 0 
+7ffd4bfe9000-7ffd4c00a000 rw-p 00000000 00:00 0                          [stack]
+7ffd4c1eb000-7ffd4c1ed000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+----------------------------------------------------------------
+SceneGetPictureInvalidIndex [2 points]
+Result: FAILED: unit_tests.cpp:120: Assertion (NULL == image) failed
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+invalid index
+
+----------------------------------------------------------------
+SceneChangeMaxLayersSmaller (run under asan) [1 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (2000ms timeout)
+Output:
+----------------------------------------------------------------
+Running SceneChangeMaxLayersSmaller [worth 1 points, output below]
+=================================================================
+==5923==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ee54 at pc 0x00000068363a bp 0x7fff41079290 sp 0x7fff41079288
+WRITE of size 4 at 0x60200000ee54 thread T0
+    #0 0x683639 in Scene::addpicture(char const*, int, int, int) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x683639)
+    #1 0x64d827 in proxy_test::SceneChangeMaxLayersSmaller(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x64d827)
+    #2 0x4ea808 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ea808)
+    #3 0x4cf9b3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4cf9b3)
+    #4 0x4c14fe in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4c14fe)
+    #5 0x4bbce2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4bbce2)
+    #6 0x4b19a7 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b19a7)
+    #7 0x4b0b47 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b0b47)
+    #8 0x4ad2a9 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ad2a9)
+    #9 0x4aabfe in main (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4aabfe)
+    #10 0x7f8a99cd1b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #11 0x4a3779 in _start (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4a3779)
+
+0x60200000ee54 is located 0 bytes to the right of 4-byte region [0x60200000ee50,0x60200000ee54)
+allocated by thread T0 here:
+    #0 0x41eedb in operator new[](unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:64:37
+    #1 0x6813bd in Scene::changemaxlayers(int) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x6813bd)
+    #2 0x64d7e0 in proxy_test::SceneChangeMaxLayersSmaller(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x64d7e0)
+    #3 0x4ea808 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ea808)
+    #4 0x4cf9b3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4cf9b3)
+    #5 0x4c14fe in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4c14fe)
+    #6 0x4bbce2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4bbce2)
+    #7 0x4b19a7 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b19a7)
+    #8 0x4b0b47 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b0b47)
+    #9 0x4ad2a9 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ad2a9)
+    #10 0x4aabfe in main (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4aabfe)
+    #11 0x7f8a99cd1b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 Scene::addpicture(char const*, int, int, int)
+Shadow bytes around the buggy address:
+  0x0c047fff9d70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9d80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9dc0: fa fa fd fa fa fa 04 fa fa fa[04]fa fa fa 00 fa
+  0x0c047fff9dd0: fa fa fd fa fa fa fd fa fa fa fd fd fa fa 04 fa
+  0x0c047fff9de0: fa fa fd fa fa fa fd fa fa fa fd fa fa fa fd fa
+  0x0c047fff9df0: fa fa fd fa fa fa 04 fa fa fa 04 fa fa fa fd fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==5923==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+SceneChangeLayerInvalid [2 points]
+Result: FAILED: Segmentation fault
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+invalid index
+
+----------------------------------------------------------------
+SceneDrawScene4 [3 points]
+Result: FAILED: Segmentation fault
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+SceneTranslateInvalid [2 points]
+Result: FAILED: Aborted
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+invalid index
+invalid index
+*** Error in `./proxy': free(): invalid next size (normal): 0x0000000000836450 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7c503)[0x7fc35b87d503]
+./proxy[0x4142e5]
+./proxy[0x4490be]
+./proxy[0x44efa4]
+./proxy[0x41611d]
+./proxy[0x411d49]
+./proxy[0x40fa30]
+./proxy[0x415ef6]
+./proxy[0x411201]
+./proxy[0x40d2e5]
+./proxy[0x40cadb]
+./proxy[0x40c2c9]
+./proxy[0x40bc03]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fc35b822b35]
+./proxy[0x40a854]
+======= Memory map: ========
+00400000-004ae000 r-xp 00000000 00:12 2196536249                         /dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy
+006ad000-006af000 r--p 000ad000 00:12 2196536249                         /dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy
+006af000-006b0000 rw-p 000af000 00:12 2196536249                         /dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy
+00836000-00857000 rw-p 00000000 00:00 0                                  [heap]
+00857000-00873000 rw-p 00000000 00:00 0                                  [heap]
+7fc354000000-7fc354021000 rw-p 00000000 00:00 0 
+7fc354021000-7fc358000000 ---p 00000000 00:00 0 
+7fc35b3e7000-7fc35b3e9000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b3e9000-7fc35b5e9000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b5e9000-7fc35b5ea000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b5ea000-7fc35b5eb000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fc35b5eb000-7fc35b600000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b600000-7fc35b7ff000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b7ff000-7fc35b800000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b800000-7fc35b801000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fc35b801000-7fc35b9b7000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35b9b7000-7fc35bbb7000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35bbb7000-7fc35bbbb000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35bbbb000-7fc35bbbd000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fc35bbbd000-7fc35bbc2000 rw-p 00000000 00:00 0 
+7fc35bbc2000-7fc35bbd7000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bbd7000-7fc35bdd6000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bdd6000-7fc35bdd7000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bdd7000-7fc35bdd8000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fc35bdd8000-7fc35bed8000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35bed8000-7fc35c0d8000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35c0d8000-7fc35c0d9000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35c0d9000-7fc35c0da000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fc35c0da000-7fc35c1e5000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fc35c1e5000-7fc35c3e5000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fc35c3e5000-7fc35c3ec000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fc35c3ec000-7fc35c3ef000 rw-p 00000000 00:00 0 
+7fc35c3ef000-7fc35c418000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c418000-7fc35c618000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c618000-7fc35c619000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c619000-7fc35c61a000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fc35c61a000-7fc35c621000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c621000-7fc35c820000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c820000-7fc35c821000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c821000-7fc35c822000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fc35c822000-7fc35c839000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35c839000-7fc35ca38000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35ca38000-7fc35ca39000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35ca39000-7fc35ca3a000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fc35ca3a000-7fc35ca3e000 rw-p 00000000 00:00 0 
+7fc35ca3e000-7fc35ca5e000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fc35cc3a000-7fc35cc40000 rw-p 00000000 00:00 0 
+7fc35cc5a000-7fc35cc5b000 rw-p 00000000 00:00 0 
+7fc35cc5b000-7fc35cc5d000 rw-p 00000000 00:00 0 
+7fc35cc5d000-7fc35cc5e000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fc35cc5e000-7fc35cc5f000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fc35cc5f000-7fc35cc60000 rw-p 00000000 00:00 0 
+7ffd4bfe9000-7ffd4c00a000 rw-p 00000000 00:00 0                          [stack]
+7ffd4c1eb000-7ffd4c1ed000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 88
+
