@@ -32,20 +32,20 @@ const RGBAPixel PETAL_COLOR = color::RED;
 Flower::Flower(const Vector2& center)
 {
     const Vector2 stem_center(center.x(), center.y() + STEM_HEIGHT / 2);
-    Rectangle my_stem(stem_center, STEM_COLOR, STEM_WIDTH, STEM_HEIGHT);
-    stem=new Rectangle(my_stem);
+    stem=new Rectangle(stem_center, STEM_COLOR, STEM_WIDTH, STEM_HEIGHT);
 
-    Circle my_pistil(Vector2(center.x(), center.y() - PISTIL_RADIUS / 2),
+
+    pistil = new Circle(Vector2(center.x(), center.y() - PISTIL_RADIUS / 2),
                      PISTIL_COLOR, PISTIL_RADIUS);
-    pistil=new Circle(my_pistil);
+
 
     const Vector2 leaf_center(stem_center.x() - STEM_WIDTH / 2 + 1,
                               stem_center.y() + STEM_HEIGHT / 4);
-    Triangle my_leaf(LEAF_COLOR,
+    leaf = new Triangle(LEAF_COLOR,
         Vector2(leaf_center.x(), leaf_center.y() - STEM_HEIGHT / 4),
         Vector2(leaf_center.x() - LEAF_WIDTH, leaf_center.y() - LEAF_HEIGHT),
         Vector2(leaf_center.x() - LEAF_WIDTH / 2, leaf_center.y()));
-    leaf=new Triangle(my_leaf);
+
 }
 
 
