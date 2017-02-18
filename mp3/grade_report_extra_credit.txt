@@ -1,0 +1,51 @@
+Grading r17572 by zeruiw2 committed on Fri Feb 17 23:44:51 CST 2017
+Monad Autograder
+Testing mp3.1 at 2017-02-18 02:02:41
+
+"Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. Code for readability." ~ John Woods
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testInsertFront  . . . . . . . . [2 pts] - passed
+testInsertBack . . . . . . . . . [2 pts] - passed
+testDestructor10 (asan)  . . . . [5 pts] - FAILED
+testDestructor37 (asan)  . . . . [5 pts] - FAILED
+testReverse20_size . . . . . . . [1 pts] - passed
+testReverse20_forward  . . . . . [3 pts] - passed
+testReverse20_backward . . . . . [4 pts] - passed
+testReverse37_size . . . . . . . [1 pts] - passed
+testReverse37_forward  . . . . . [2 pts] - passed
+testReverse37_backward . . . . . [2 pts] - passed
+testReverseEmpty (asan)  . . . . [5 pts] - FAILED
+testReverse20_memory (asan)  . . [3 pts] - FAILED
+testReverseNth20_2_size  . . . . [1 pts] - passed
+testReverseNth20_2_forward . . . [3 pts] - passed
+testReverseNth20_2_backward  . . [4 pts] - FAILED
+testReverseNth37_4_size  . . . . [1 pts] - passed
+testReverseNth37_4_forward . . . [5 pts] - passed
+testReverseNth37_4_backward  . . [6 pts] - passed
+testReverseNth37_37  . . . . . . [3 pts] - passed
+testReverseNth37_4_memory (asan) [3 pts] - FAILED
+testReverseNthEmpty (asan) . . . [5 pts] - FAILED
+testWaterfall4_size  . . . . . . [1 pts] - FAILED
+testWaterfall4_forward . . . . . [3 pts] - FAILED
+testWaterfall4_backward  . . . . [4 pts] - FAILED
+testWaterfall7_size  . . . . . . [1 pts] - FAILED
+testWaterfall7_forward . . . . . [3 pts] - FAILED
+testWaterfall7_backward  . . . . [4 pts] - FAILED
+testWaterfall12_size . . . . . . [1 pts] - FAILED
+testWaterfall12_forward  . . . . [3 pts] - FAILED
+testWaterfall12_backward . . . . [4 pts] - FAILED
+testWaterfall7_memory (asan) . . [5 pts] - FAILED
+testWaterfall7_empty (asan)  . . [5 pts] - FAILED
+
+
+Total score...
+================================================================
+TOTAL SCORE: 36
+
