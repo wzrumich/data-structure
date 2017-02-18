@@ -61,7 +61,7 @@ void testInserts()
     cout << "Start by uncommenting lines " << (__LINE__ + 3) << " through " << (__LINE__ + 26) << "." << endl;
 
     /* uncomment the below */
-    /*
+
     cout << "[main]: " << __func__ << "()" << endl;
     List<int> list;
 
@@ -71,24 +71,37 @@ void testInserts()
 
     cout << "[testInserts]: " << list << endl;
     cout << "[testInserts]: size: " << list.size() << endl;
-    if (list.size() != 10)
+    if (list.size() != 45)
         cout << "[testInserts]: Incorrect size" << endl;
-
+cout<<list<<endl;
+list.reverse();
+cout<<list<<endl;
+list.reverseNth(3);
+cout<<list<<endl;
     List<int> list2;
 
-    // test insertBack
-    for (size_t i = 1; i <= 10; i++)
+    //test insertBack
+    for (size_t i = 1; i <= 209; i++)
         list2.insertBack(i);
 
-    cout << "[testInserts]: " << list2 << endl;
-    cout << "[testInserts]: size: " << list2.size() << endl;
-    if (list2.size() != 10)
+   // cout << "[testInserts]: " << list2 << endl;
+   // cout << "[testInserts]: size: " << list2.size() << endl;
+    if (list2.size() != 209)
         cout << "[testInserts]: Incorrect size" << endl;
-    */
+
 }
 
 void testReverse()
 {
+
+ List<int> list3;
+  for (size_t i = 1; i <= 5; i++)
+      list3.insertBack(i);
+
+  cout << "[testlist]: " << list3 << endl;
+      list3.reverse();
+  cout<<"[result]:"<<list3<<endl;
+
     cout << "[main]: " << __func__ << "()" << endl;
     PNG in("in_02.png");
 
@@ -103,6 +116,15 @@ void testReverse()
 
 void testReverseNth()
 {
+
+  List<int> list4;
+   for (size_t i = 1; i <= 15; i++)
+       list4.insertBack(i);
+
+   cout << "[testlist]: " << list4 << endl;
+       list4.reverseNth(7);
+   cout<<"[result]:"<<list4<<endl;
+
     cout << "[main]: " << __func__ << "()" << endl;
     PNG in("in_03.png");
 
