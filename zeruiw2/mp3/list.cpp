@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 /**
  * @file list.cpp
  * Doubly Linked List (MP 3).
@@ -17,6 +19,8 @@
 template <class T>
 List<T>::~List()
 {
+  clear();
+
     /// @todo Graded in MP3.1
 }
 
@@ -27,7 +31,24 @@ List<T>::~List()
 template <class T>
 void List<T>::clear()
 {
+if(head==NULL){
+
+}
+else if(head==tail){
+  tail=NULL;
+  head=NULL;
+}
+else{
+while(head!=tail){
+ListNode* temp=tail->prev;
+tail->prev=NULL;
+temp->next=NULL;
+tail=temp;
+}
+
+}
     /// @todo Graded in MP3.1
+
 }
 
 /**
@@ -39,6 +60,20 @@ void List<T>::clear()
 template <class T>
 void List<T>::insertFront(T const& ndata)
 {
+length++;
+ListNode* insertF=new ListNode(ndata);
+if(head==NULL){
+  insertF->next=tail;
+  head=insertF;
+  tail=insertF;
+  return;
+}
+else {
+insertF->next=head;
+head->prev=insertF;
+head=insertF;
+}
+
     /// @todo Graded in MP3.1
 }
 
@@ -51,6 +86,18 @@ void List<T>::insertFront(T const& ndata)
 template <class T>
 void List<T>::insertBack(const T& ndata)
 {
+  length++;
+ListNode* insertB= new ListNode(ndata);
+if(head==NULL){
+  insertB->prev=NULL;
+  head=insertB;
+  tail=insertB;
+}
+else {
+tail->next=insertB;
+insertB->prev=tail;
+tail=insertB;
+}
     /// @todo Graded in MP3.1
 }
 
@@ -77,8 +124,39 @@ void List<T>::reverse()
 template <class T>
 void List<T>::reverse(ListNode*& startPoint, ListNode*& endPoint)
 {
-    /// @todo Graded in MP3.1
+  if(startPoint==NULL||endPoint==NULL||startPoint==endPoint){
+    return;
+  }
+  ListNode* st2=startPoint;
+  ListNode* temp=NULL;
+  ListNode* st=startPoint;
+  ListNode* end=endPoint;
+  ListNode* stprev=startPoint->prev;
+  ListNode* endnext=endPoint->next;
+  while(st!=endnext){
+    temp=st->prev;
+    st->prev=st->next;
+    st->next=temp;
+    st=st->prev;
+  }
+startPoint->next=endnext;
+if(endnext!=NULL){
+  endnext->prev=startPoint;
 }
+
+endPoint->prev=stprev;
+if(stprev!=NULL){
+  stprev->next=endPoint;
+}
+if(temp!=NULL){
+temp=startPoint;
+startPoint=endPoint;
+endPoint=temp;
+}
+
+
+}
+
 
 /**
  * Reverses blocks of size n in the current List. You should use your
@@ -89,8 +167,41 @@ void List<T>::reverse(ListNode*& startPoint, ListNode*& endPoint)
 template <class T>
 void List<T>::reverseNth(int n)
 {
-    /// @todo Graded in MP3.1
-}
+  if(head==NULL||tail==NULL||n<=0){
+    return;
+  }
+ListNode* st=head;
+ListNode* end=head;
+    if(n>=length){
+      reverse();
+      return;
+    }
+  	for(int i=0; i<n-1 ;i++){
+      if(end->next!=NULL){
+        end=end->next;
+      }
+    }
+      reverse(head,end);
+
+  	while(end->next!=NULL){
+      st=end->next;
+      for(int i=0;i<n;i++){
+        if(end->next!=NULL){
+          end=end->next;
+        }
+      }
+      reverse(st,end);
+    }
+
+
+
+  }
+
+
+
+
+     /// @todo Graded in MP3.1
+
 
 /**
  * Modifies the List using the waterfall algorithm.
@@ -104,6 +215,7 @@ void List<T>::reverseNth(int n)
 template <class T>
 void List<T>::waterfall()
 {
+
     /// @todo Graded in MP3.1
 }
 
