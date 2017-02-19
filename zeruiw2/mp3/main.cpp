@@ -149,6 +149,13 @@ void testWaterfall()
 {
     cout << "[main]: " << __func__ << "()" << endl;
     PNG in("in_05.png");
+    List<int> list5;
+     for (size_t i = 1; i <= 5; i++)
+         list5.insertBack(i);
+
+     cout << "[testlist]: " << list5 << endl;
+         list5.waterfall();
+     cout<<"[result]:"<<list5<<endl;
 
     List<RGBAPixel> list = imageToList(in);
     list.waterfall();
