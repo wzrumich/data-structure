@@ -215,20 +215,22 @@ ListNode* end=head;
 template <class T>
 void List<T>::waterfall()
 {
-if(head==NULL||tail==NULL){
+if(head==NULL||head==tail||tail==NULL){
   return;
 }
-ListNode* temp=NULL;
-ListNode* run=head->next;
-while(run!=NULL&&run->next!=NULL){
-  run->prev->next=run->next;
-  run->next->prev=run->prev;
-  temp=run->next;
-  tail->next=run;
-  run->prev=tail;
-  run->next=NULL;
-  tail=run;
-  run=temp;
+ListNode * curr=head;
+ListNode * currNex=head->next;
+
+while(curr->next!=tail){
+  curr->next=currNex->next;
+  currNex->next->prev=curr;
+  tail->next=currNex;
+  currNex->prev=tail;
+  tail=currNex;
+  tail->next=NULL;
+  curr=curr->next;
+  currNex=curr->next;
+
 }
     /// @todo Graded in MP3.1
 }
