@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 /**
  * @file list.cpp
@@ -262,7 +263,7 @@ List<T> List<T>::split(int splitPoint)
         // set up current list
         tail = head;
         while (tail->next != NULL)
-            tail = tail->next;
+        tail = tail->next;
         length = splitPoint;
     }
 
@@ -294,8 +295,26 @@ List<T> List<T>::split(int splitPoint)
 template <class T>
 typename List<T>::ListNode* List<T>::split(ListNode* start, int splitPoint)
 {
+  for(int i=0; i<splitPoint;i++){
+    if(start!=NULL){
+      start=start->next;
+    }
+  }
+  if(start->prev!=NULL){
+start->prev->next=NULL;
+start->prev=NULL;}
+  ListNode* result = start;
+  ListNode* temp=result;
+ while(start->next!=NULL){
+   result->next=start->next;
+   result->next->prev=result;
+   start=start->next;
+   result=result->next;
+ }
+result=temp;
+return result;
     /// @todo Graded in MP3.2
-    return NULL; // change me!
+   // change me!
 }
 
 /**
@@ -337,8 +356,70 @@ void List<T>::mergeWith(List<T>& otherList)
 template <class T>
 typename List<T>::ListNode* List<T>::merge(ListNode* first, ListNode* second)
 {
+  ListNode* result= NULL;
+  ListNode* temp=NULL;
+  int size1=0; int size2=0;
+  while(first!=NULL){
+    size1++;
+    first=first->next;
+  }
+  while(second!=NULL){
+    size2++;
+    second=second->next;
+  }
+
+  int size=size1+size2;
+  if(first!=NULL&&second!=NULL){
+  if(first>=second){
+    result=second;
+    second=second->next;
+  }
+  else if(first<second){
+    result=first;
+    first=first->next;
+  }
+}
+if(first==NULL){
+  return second;
+}
+if(second==NULL){
+  return first;
+}
+    temp=result;
+
+  for(int i=0; i<size-1; i++){
+    if(first==NULL){
+      result->next=second;
+      second->prev=result;
+      break;
+    }
+    if(second==NULL){
+      result->next=first;
+      first->prev=result;
+      break;
+    }
+
+  else
+  {
+    if(first>=second){
+      result->next=second;
+      second->prev=result;
+      result=second;
+      second=second->next;
+    }
+    else if(first<second){
+      result->next=first;
+      first->prev=result;
+      result=first;
+      first=first->next;
+    }
+  }
+
+
+  }
+     result=temp;
     /// @todo Graded in MP3.2
-    return NULL; // change me!
+    return result; // change me!
 }
 
 /**
@@ -367,6 +448,6 @@ void List<T>::sort()
 template <class T>
 typename List<T>::ListNode* List<T>::mergesort(ListNode* start, int chainLength)
 {
-    /// @todo Graded in MP3.2
+      /// @todo Graded in MP3.2
     return NULL; // change me!
 }

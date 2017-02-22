@@ -98,6 +98,7 @@ class List
      * @param rhs The right hand side of the assignment statement.
      */
     List<T>& operator=(const List<T>& rhs);
+    bool operator<(const List<T>& other);
 
     /**
      * Gets the size of the List.
