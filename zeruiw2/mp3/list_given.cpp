@@ -38,7 +38,10 @@ List<T>& List<T>::operator=(List<T> const& rhs)
     }
     return *this;
 }
-
+template <class T>
+bool List<T>::operator<(List<T> const& other){
+  return (this->data<other.data);
+}
 template <class T>
 bool List<T>::empty() const
 {

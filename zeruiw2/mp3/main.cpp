@@ -176,6 +176,12 @@ void testWaterfall()
 
 void testSplit()
 {
+  List<int> list7;
+  List<int> list8;
+   for (size_t i = 1; i <= 12; i++)
+       list7.insertBack(i);
+ list8=list7.split(7);
+   cout << "[testlist]: " << list8 << endl;
     cout << "[main]: " << __func__ << "()" << endl;
 
     PNG in("in_07.png");
@@ -226,6 +232,18 @@ void testSplit()
 
 void testMerge()
 {
+  List<int> list9;
+  List<int> list10;
+   for (size_t i = 8; i <= 16; i++)
+       list9.insertBack(i);
+   for (size_t i = 0; i <= 10; i++)
+       list10.insertBack(i);
+
+  list9.mergeWith(list10);
+   cout << "[testlist]: " << list9 << endl;
+
+
+
     cout << "[main]: " << __func__ << "()" << endl;
 
     PNG im1("in_08.png");
