@@ -34,10 +34,14 @@ List<T>& List<T>::operator=(List<T> const& rhs)
 {
     if (this != &rhs) {
         clear();
-        copy(rhs);
-    }
+        copy(rhs);}
     return *this;
 }
+
+
+
+
+
 
 template <class T>
 bool List<T>::empty() const

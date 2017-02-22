@@ -1,6 +1,6 @@
 #include "list.h"
 #include "blockpng.h"
-
+#include <cmath>
 #include <algorithm>
 #include <iostream>
 #include <string>
@@ -234,9 +234,9 @@ void testMerge()
 {
   List<int> list9;
   List<int> list10;
-   for (size_t i = 8; i <= 16; i++)
+   for (size_t i = 2; i <= 5; i++)
        list9.insertBack(i);
-   for (size_t i = 0; i <= 10; i++)
+   for (size_t i = 0; i <= 6; i++)
        list10.insertBack(i);
 
   list9.mergeWith(list10);
@@ -285,6 +285,16 @@ inline vector<int> buildVector(BlockPNG const& b, int d)
 
 void testSort()
 {
+  List<int> list11;
+   for (size_t i = 0; i <= 10; i++){
+      size_t a =rand() % 10;
+       list11.insertBack(a);}
+        cout << "[original]: " << list11 << endl;
+
+  list11.sort();
+   cout << "[testlist]: " << list11 << endl;
+
+
     cout << "[main]: " << __func__ << "()" << endl;
 
     srand(225);

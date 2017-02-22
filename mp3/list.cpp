@@ -18,10 +18,6 @@ using namespace std;
  * memory does not leak on destruction of a list.
  */
 
- template <class T>
- bool List<T>::operator<(List<T> const& other){
-   return (this->data<other.data);
- }
 
 
 
@@ -32,6 +28,7 @@ List<T>::~List()
   clear();
 
     /// @todo Graded in MP3.1
+
 }
 
 /**
@@ -42,21 +39,20 @@ template <class T>
 void List<T>::clear()
 {
 if(head==NULL){
+return;
+}
+ListNode* run = head;
+while(run!=NULL){
+ListNode* temp=run->next;
+delete run;
+run=NULL;
+run=temp;
+}
+length=0;
+head=NULL;
+tail=NULL;
 
-}
-else if(head==tail){
-  tail=NULL;
-  head=NULL;
-}
-else{
-while(head!=tail){
-ListNode* temp=tail->prev;
-tail->prev=NULL;
-temp->next=NULL;
-tail=temp;
-}
 
-}
     /// @todo Graded in MP3.1
 
 }
@@ -367,65 +363,48 @@ typename List<T>::ListNode* List<T>::merge(ListNode* first, ListNode* second)
 {
   ListNode* result= NULL;
   ListNode* temp=NULL;
-  int size1=0; int size2=0;
-  while(first!=NULL){
-    size1++;
-    first=first->next;
-  }
-  while(second!=NULL){
-    size2++;
-    second=second->next;
-  }
 
-  int size=size1+size2;
-  if(first!=NULL&&second!=NULL){
-  if(first>=second){
+  if(first==NULL){
+    return second;
+  }
+  if(second==NULL){
+    return first;
+  }
+  else{
+  if(second->data<first->data){
     result=second;
     second=second->next;
   }
-  else if(first<second){
+  else{
     result=first;
     first=first->next;
   }
-}
-if(first==NULL){
-  return second;
-}
-if(second==NULL){
-  return first;
-}
+  }
     temp=result;
-
-  for(int i=0; i<size-1; i++){
-    if(first==NULL){
+  while(first!=NULL&&second!=NULL){
+    if(second->data<first->data){
       result->next=second;
       second->prev=result;
-      break;
-    }
-    if(second==NULL){
-      result->next=first;
-      first->prev=result;
-      break;
-    }
-
-  else
-  {
-    if(first>=second){
-      result->next=second;
-      second->prev=result;
-      result=second;
+      result=result->next;
       second=second->next;
     }
-    else if(first<second){
+    else{
       result->next=first;
       first->prev=result;
-      result=first;
+      result=result->next;
       first=first->next;
     }
   }
-
-
+  if(first==NULL){
+    result->next=second;
+    second->prev=result;
   }
+  if(second==NULL){
+    result->next=first;
+    first->prev=result;
+  }
+
+
      result=temp;
     /// @todo Graded in MP3.2
     return result; // change me!
@@ -457,6 +436,22 @@ void List<T>::sort()
 template <class T>
 typename List<T>::ListNode* List<T>::mergesort(ListNode* start, int chainLength)
 {
+if(start==NULL){
+  return NULL;
+}
+if(chainLength<=1){
+  return start;
+}
+int mid= chainLength/2;
+int fmid=chainLength-mid;
+ListNode* lag = split(start, mid);
+start=mergesort(start,mid);
+lag=mergesort(lag,fmid);
+return merge(start,lag);
+
+
+
+
       /// @todo Graded in MP3.2
-    return NULL; // change me!
+   // change me!
 }
