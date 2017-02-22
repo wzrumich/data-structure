@@ -17,6 +17,15 @@ using namespace std;
  * Destroys the current List. This function should ensure that
  * memory does not leak on destruction of a list.
  */
+
+ template <class T>
+ bool List<T>::operator<(List<T> const& other){
+   return (this->data<other.data);
+ }
+
+
+
+
 template <class T>
 List<T>::~List()
 {
