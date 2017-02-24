@@ -1,8 +1,8 @@
-Grading r21141 by zeruiw2 committed on Wed Feb 22 17:21:15 CST 2017
+Grading r21503 by enx-cs225autograder committed on Thu Feb 23 02:10:45 CST 2017
 Monad Autograder
-Testing mp3 at 2017-02-23 02:02:11
+Testing mp3 at 2017-02-24 02:11:07
 
-"And I'm sitting there hallucinating a bird on my pillow from the benadryl and I think to myself ... 'I need to write a poem about Makefiles'." ~ Lisa Sproat
+"Don't beg. Earn it. Then it will be granted to you." ~ Adroc Thurston
 
 Setting up test environment...
 Compiling...
