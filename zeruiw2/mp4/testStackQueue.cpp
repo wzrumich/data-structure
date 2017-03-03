@@ -23,8 +23,9 @@ void testQueue()
     Queue<int> intQueue;
     for (int i = 1; i <= 10; i++) {
         intQueue.enqueue(i);
+
     }
-    cout << intQueue.peek() << endl;
+  cout << intQueue.peek() << endl;
     while (!intQueue.isEmpty()) {
         cout << intQueue.dequeue() << " ";
     }
