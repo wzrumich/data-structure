@@ -1,8 +1,8 @@
-Grading r26684 by enx-cs225autograder committed on Sat Mar  4 01:52:13 CST 2017
+Grading r26912 by enx-cs225autograder committed on Sun Mar  5 02:07:34 CST 2017
 Monad Autograder
-Testing mp4 at 2017-03-05 02:00:23
+Testing mp4 at 2017-03-06 02:17:25
 
-"Simplicity and elegance are unpopular because they require hard work and discipline to achieve and education to be appreciated." ~ Edsger Dijkstra
+"C makes it easy to shoot yourself in the foot. C++ makes it harder, but when you do, you blow away your whole leg!" ~ Bjarne Stroustrup
 
 Setting up test environment...
 Compiling...
