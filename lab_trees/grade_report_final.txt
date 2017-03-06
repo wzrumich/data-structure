@@ -1,0 +1,23 @@
+Grading r27257 by zeruiw2 committed on Sun Mar  5 18:31:33 CST 2017
+Monad Autograder
+Testing lab_trees at 2017-03-06 00:26:12
+
+"The most likely way for the world to be destroyed, most experts agree, is by accident. That's where we come in; we're computer professionals. We cause accidents." ~ Nathaniel Borenstein
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_isOrdered  . [33 pts] - passed
+test_mirror . . . [33 pts] - passed
+test_printPaths . [34 pts] - passed
+test_sumDistances [25 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 125
+
