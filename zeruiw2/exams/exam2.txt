@@ -1,0 +1,303 @@
+Exam #2 score (zeruiw2): 50/200
+
+=== Grade Feedback for Problem "programming_bigThree_createCtor_garden" ===
+=====
+[0/100]
+
+--- stdout ---
+g++ flower.cpp -std=c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ garden.cpp -std=c++1y -c -g -O0 -Wall -Wextra -pedantic
+
+
+--- stderr ---
+garden.cpp: In constructor ‘garden::garden(flower*)’:
+garden.cpp:10:17: error: no match for ‘operator=’ (operand types are ‘flower’ and ‘flower*’)
+       grid[j][k]=new flower();
+                 ^
+garden.cpp:10:17: note: candidates are:
+In file included from garden.cpp:1:0:
+flower.h:7:7: note: flower& flower::operator=(const flower&)
+ class flower {
+       ^
+flower.h:7:7: note:   no known conversion for argument 1 from ‘flower*’ to ‘const flower&’
+flower.h:7:7: note: flower& flower::operator=(flower&&)
+flower.h:7:7: note:   no known conversion for argument 1 from ‘flower*’ to ‘flower&&’
+make: *** [garden.o] Error 1
+
+
+--- submitted file: garden.cpp ---
+#include "flower.h"
+#include "garden.h"
+
+
+ garden::garden(flower* test){
+      grid = new flower*[4];
+  for(int j=0; j<4; j++){
+      grid[j]=test;
+    for(int k=0; k<4; k++){
+      grid[j][k]=new flower();
+    }
+  }
+}
+
+flower garden::getFlower(int row, int column) const {
+  return this->grid[row][column];
+}
+
+void garden::setFlower(int row, int column, const flower &f) {
+  this->grid[row][column] = f;
+}
+
+--- submitted file: garden.h ---
+#ifndef _GARDEN_H
+#define _GARDEN_H
+
+#include "flower.h"
+
+class garden {
+public:
+  flower getFlower(int row, int column) const;
+  void setFlower(int row, int column, const flower &f);
+  garden(flower* test);
+private:
+  flower **grid;
+};
+
+#endif
+
+
+=== Grade Feedback for Problem "programming_operator_plus_backpack" ===
+[0/25]: Test: backpack member functions after adding backpacks
+[25/25]: Test: add an empty backpack to a backpack
+[25/25]: Test: add backpack to an empty backpack
+[0/25]: Test: add two full backpacks together
+=====
+[50/100]
+
+--- stdout ---
+g++ backpack.cpp -std=c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ backpack-test.cpp -std=c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ backpack.o backpack-test.o -std=c++1y -lpng -lpthread -o catch-tester
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+catch-tester is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+backpack member functions after adding backpacks
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:63
+...............................................................................
+
+backpack-test.cpp:74: FAILED:
+  CHECK( c == expected )
+with expansion:
+  {?} == {?}
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 3 | 2 passed | 1 failed
+
+===============================================================================
+All tests passed (3 assertions in 1 test case)
+
+===============================================================================
+All tests passed (3 assertions in 1 test case)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+catch-tester is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  getItemCount() correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:142
+...............................................................................
+
+backpack-test.cpp:143: FAILED:
+  CHECK( c.getItemCount() == 4 )
+with expansion:
+  0 == 4
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:146
+...............................................................................
+
+backpack-test.cpp:152: FAILED:
+  CHECK( c == expected )
+with expansion:
+  {?} == {?}
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 3 | 1 passed | 2 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+catch-tester is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+backpack member functions after adding backpacks
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:63
+...............................................................................
+
+backpack-test.cpp:74: FAILED:
+  CHECK( c == expected )
+with expansion:
+  {?} == {?}
+
+-------------------------------------------------------------------------------
+add an empty backpack to a backpack
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:96
+...............................................................................
+
+backpack-test.cpp:99: FAILED:
+  CHECK( c == expected )
+with expansion:
+  {?} == {?}
+
+-------------------------------------------------------------------------------
+add backpack to an empty backpack
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:120
+...............................................................................
+
+backpack-test.cpp:123: FAILED:
+  CHECK( c == expected )
+with expansion:
+  {?} == {?}
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  getItemCount() correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:142
+...............................................................................
+
+backpack-test.cpp:143: FAILED:
+  CHECK( c.getItemCount() == 4 )
+with expansion:
+  0 == 4
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:146
+...............................................................................
+
+backpack-test.cpp:152: FAILED:
+  CHECK( c == expected )
+with expansion:
+  {?} == {?}
+
+===============================================================================
+test cases:  4 | 4 failed
+assertions: 12 | 7 passed | 5 failed
+
+
+
+--- stderr ---
+
+
+--- submitted file: backpack.cpp ---
+#include "backpack.h"
+
+//
+// In the `backpack` class, overload the `+` (plus) operator to add two
+// `backpack` classes.
+//
+// The result must be a `backpack` where:
+// - the result `size` is the sum of the `size` of each individual backpack, and
+// - the items (`items` and `item_weights`) in the result are the items from
+//  both backpacks
+//
+
+backpack::backpack(int size) : size(size), items(0) {
+  this->item_weights = new int[size];
+}
+backpack backpack:: operator+(backpack const &  other)
+{
+  int testsize=this->getSize()+other.getSize();
+backpack result(testsize);
+
+int items=this->getItemCount()+other.getItemCount();
+if(items<size){
+  result.items=items;
+}
+
+int itemweights=*(this->getItems())+*(other.getItems());
+if(addItem(itemweights)){
+  *(result.item_weights)=itemweights;
+}
+return result;
+
+}
+bool backpack::addItem(int weight) {
+  if (items == size) {
+    // Cannot add if the backpack is full of items
+    return false;
+  } else {
+    // Otherwise, add the item
+    this->item_weights[this->items] = weight;
+    this->items++;
+    return true;
+  }
+}
+
+int backpack::getSize() const {
+  return this->size;
+}
+
+int backpack::getItemCount() const {
+  return this->items;
+}
+
+const int *backpack::getItems() const {
+  return this->item_weights;
+}
+
+--- submitted file: backpack.h ---
+#ifndef _BACKPACK_H
+#define _BACKPACK_H
+
+//
+// In the `backpack` class, overload the `+` (plus) operator to add two
+// `backpack` classes.
+//
+// The result must be a `backpack` where:
+// - the result `size` is the sum of the `size` of each individual backpack, and
+// - the items (`items` and `item_weights`) in the result are the items from
+//  both backpacks
+//
+
+class backpack {
+public:
+  backpack(int size);
+  backpack operator+(backpack const & other);
+  int getSize() const;
+  int getItemCount() const;
+  const int *getItems() const;
+  bool addItem(int weight);
+
+private:
+  int size;
+  int items;
+  int *item_weights;
+};
+
+#endif
+
+
