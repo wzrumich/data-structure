@@ -76,9 +76,34 @@ void BinaryTree<T>::printLeftToRight(const Node* subRoot) const
 template <typename T>
 void BinaryTree<T>::mirror()
 {
-    // your code here
+  mirror(root);  // your code here
 }
 
+
+
+template <typename T>
+void BinaryTree<T>::mirror(Node* noder){
+
+if(noder!=NULL){
+  if(noder->right!=NULL||noder->left!=NULL){
+
+    Node* temp=NULL;
+    temp=noder->right;
+    noder->right=noder->left;
+    noder->left=temp;
+    mirror(noder->left);
+    mirror(noder->right);
+  }
+  if(noder==NULL){
+
+  }
+
+
+}
+
+
+
+}
 
 /**
  * @return True if an in-order traversal of the tree would produce a
@@ -88,23 +113,69 @@ void BinaryTree<T>::mirror()
 template <typename T>
 bool BinaryTree<T>::isOrdered() const
 {
-    // your code here
-    return false;
+
+  return  isOrderedee(root,INT_MIN, INT_MAX);
+
+}
+template <typename T>
+bool BinaryTree<T>::isOrderedee(Node* nodee, int min, int max) const
+{
+if(nodee==NULL||nodee->left==NULL||nodee->right==NULL){
+  return true;
+}
+if(nodee->elem<min||nodee->elem>max){
+  return false;
 }
 
+return (isOrderedee(nodee->left,min,nodee->elem-1)&&isOrderedee
+(nodee->right,nodee->elem+1,max));
 
+
+
+
+
+
+}
 /**
  * Prints out all the possible paths from the root of the tree to any leaf node.
  * That is, all sequences starting at the root node and continuing downwards,
  * ending at a leaf node. Paths ending in a left node should be printed before
  * paths ending in a node further to the right.
  */
+
 template <typename T>
 void BinaryTree<T>::printPaths() const
 {
-    // your code here
+    vector<T> v={};
+    printPath(root, v);
 }
+template <typename T>
+void BinaryTree<T>::printPath(Node* node, vector<T> v) const{
+if(node==NULL){
+cout<<"Path:"<<endl;
+}
+else{
+v.push_back(node->elem);
+if(node->left==NULL&&node->right==NULL){
+  cout<<"Path:";
+  for(typename vector<T>::iterator i=v.begin(); i<v.end(); i++ ){
+    cout<<" "<<*i;
+  }
+  cout<<endl;
+}
+else if(node->right==NULL&&node->left!=NULL){
+  printPath(node->left,v);
+}
+else if(node->left==NULL&&node->right!=NULL){
+  printPath(node->right,v);
+}
+else {
+     printPath(node->left,v);
+     printPath(node->right,v);
 
+}
+}
+}
 
 /**
  * Each node in a tree has a distance from the root node - the depth of that
@@ -118,6 +189,19 @@ template <typename T>
 int BinaryTree<T>::sumDistances() const
 {
     // your code here
-    return -1;
+  return   sumDistant(root,0);
+
 }
 
+template <typename T>
+int BinaryTree<T>::sumDistant(Node* node, int count) const{
+
+
+
+    if(node==NULL){
+      return 0;
+    }
+    else{
+      return count+sumDistant(node->left,count+1)+sumDistant(node->right,count+1);
+    }
+}

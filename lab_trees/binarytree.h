@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <string>
+#include <climits>
 #include <vector>
 #include <sstream>
 #include "random.h"
@@ -108,14 +109,14 @@ class BinaryTree
      *  (not creating a flipped copy).
      */
     void mirror();
-
+    void mirror(Node* noder);
     /**
      * @return True if an in-order traversal of the tree would produce a
      *  nondecreasing list output values, and false otherwise. This is also the
      *  criterion for a binary tree to be a binary search tree.
      */
     bool isOrdered() const;
-
+    bool isOrderedee(Node* nodee, int min, int max) const;
     /**
      * Prints out all the possible paths from the root of the tree to any leaf
      * node.
@@ -124,7 +125,7 @@ class BinaryTree
      * printed before paths ending in a node further to the right.
      */
     void printPaths() const;
-
+    void printPath(Node* node, vector<T> v) const;
     /**
      * Each node in a tree has a distance from the root node - the depth of that
      * node, or the number of edges along the path from that node to the root.
@@ -134,6 +135,7 @@ class BinaryTree
      * @return The sum of the distances of all nodes to the root
      */
     int sumDistances() const;
+    int sumDistant(Node* node, int count) const;
 
   private:
     Node* root;
