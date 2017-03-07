@@ -1,8 +1,8 @@
-Grading r26912 by enx-cs225autograder committed on Sun Mar  5 02:07:34 CST 2017
+Grading r27923 by enx-cs225autograder committed on Mon Mar  6 02:24:41 CST 2017
 Monad Autograder
-Testing mp4 at 2017-03-06 02:17:25
+Testing mp4 at 2017-03-07 02:06:05
 
-"C makes it easy to shoot yourself in the foot. C++ makes it harder, but when you do, you blow away your whole leg!" ~ Bjarne Stroustrup
+"If debugging is the process of removing bugs, then programming must be the process of putting them in." ~ Edsger W. Dijkstra
 
 Setting up test environment...
 Compiling...
