@@ -8,6 +8,9 @@
 #ifndef GRADIENTCOLORPICKER_H
 #define GRADIENTCOLORPICKER_H
 
+#include <stdint.h>
+#include <map>
+#include <utility>
 #include "colorPicker.h"
 #include <math.h>
 #include <iostream>
@@ -69,6 +72,14 @@ class gradientColorPicker : public colorPicker
     virtual RGBAPixel operator()(int x, int y);
 
   private:
+   int ctx;
+   int cty;
+   int rd;
+   RGBAPixel startcolor;
+   RGBAPixel endcolor;
+    
+
+
     /**
      * @todo Add any necessary private storage here! You may also add
      *	private helper functions as you see fit.

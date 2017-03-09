@@ -7,7 +7,7 @@
  */
 #ifndef _FILLER_H_
 #define _FILLER_H_
-
+#include "math.h"
 #include "png.h"
 #include "stack.h"
 #include "queue.h"

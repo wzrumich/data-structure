@@ -17,9 +17,10 @@
 #define STACK_H
 
 #include <list>
-using std::list;
+
 
 #include "ordering_structure.h"
+using std::list;
 
 /**
  * Stack class: represents a standard stack. Templated to hold elements of

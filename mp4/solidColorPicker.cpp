@@ -1,5 +1,7 @@
 #include "solidColorPicker.h"
-
+#include <math.h>
+using std::pair;
+using std::map;
 /**
  * Constructs a new solidColorPicker.
  *
@@ -7,6 +9,7 @@
  */
 solidColorPicker::solidColorPicker(RGBAPixel fillColor)
 {
+  color=fillColor;
     /**
      * @todo Initialize a new solidColorPicker here!
      */
@@ -20,9 +23,11 @@ solidColorPicker::solidColorPicker(RGBAPixel fillColor)
  */
 RGBAPixel solidColorPicker::operator()(int x, int y)
 {
+
+  return color;
     /**
      * @todo Return the appropriate color here! You will have to replace
      *	the following line.
      */
-    return RGBAPixel();
+
 }
