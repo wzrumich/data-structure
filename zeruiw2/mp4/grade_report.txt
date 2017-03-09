@@ -1,8 +1,8 @@
-Grading r28102 by enx-cs225autograder committed on Tue Mar  7 02:13:14 CST 2017
+Grading r28400 by enx-cs225autograder committed on Wed Mar  8 02:14:24 CST 2017
 Monad Autograder
-Testing mp4 at 2017-03-08 02:04:53
+Testing mp4 at 2017-03-09 02:12:29
 
-"There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies." ~ C.A.R. Hoare
+"Television won't be able to hold on to any market it captures after the first six months. People will soon get tired of staring at a plywood box every night." ~ Darryl Zanuck, 20th Century Fox, 1946
 
 Setting up test environment...
 Compiling...
