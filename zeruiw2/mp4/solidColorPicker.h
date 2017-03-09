@@ -7,7 +7,9 @@
  */
 #ifndef SOLIDCOLORPICKER_H
 #define SOLIDCOLORPICKER_H
-
+#include <stdint.h>
+#include <map>
+#include <utility>
 #include "colorPicker.h"
 
 /**
@@ -38,6 +40,8 @@ class solidColorPicker : public colorPicker
     virtual RGBAPixel operator()(int x, int y);
 
   private:
+
+    RGBAPixel color;
     /**
      * @todo Define any additional private member variables or helper
      *	functions here as you see fit.

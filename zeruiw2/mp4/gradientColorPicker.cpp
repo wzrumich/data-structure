@@ -1,6 +1,8 @@
 #include <stdlib.h>
+#include <math.h>
 #include "gradientColorPicker.h"
-
+using std::pair;
+using std::map;
 /**
  * Constructs a new gradientColorPicker.
  *
@@ -14,6 +16,13 @@ gradientColorPicker::gradientColorPicker(RGBAPixel fadeColor1,
                                          RGBAPixel fadeColor2, int radius,
                                          int centerX, int centerY)
 {
+startcolor=fadeColor1;
+endcolor=fadeColor2;
+ctx=centerX;
+cty=centerY;
+rd=radius;
+
+
     /**
      * @todo Construct your gradientColorPicker here! You may find it
      *	helpful to create additional member variables to store things.
@@ -51,9 +60,21 @@ gradientColorPicker::gradientColorPicker(RGBAPixel fadeColor1,
  */
 RGBAPixel gradientColorPicker::operator()(int x, int y)
 {
-    RGBAPixel color;
+   int d=abs(ctx-x)+abs(cty-y);
+if(d>rd){
+  return endcolor;
+}
+else {
+
+  RGBAPixel ret;
+  ret.red=startcolor.red-(int)(d*startcolor.red/rd)+(int)(d*endcolor.red/rd);
+  ret.green=startcolor.green-(int)(d*startcolor.green/rd)+(int)(d*endcolor.green/rd);
+  ret.blue=startcolor.blue-(int)(d*startcolor.blue/rd)+(int)(d*endcolor.blue/rd);
+  return ret;
+}
+
     /**
      * @todo Return the correct color here!
      */
-    return color;
+
 }
