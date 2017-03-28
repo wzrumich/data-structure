@@ -98,8 +98,8 @@ unsigned long memoized_fac(unsigned long n)
     if (lookup != memo.end()) {
         return lookup->second;
     } else {
-        unsigned long result = n * memoized_fac(n - 1);
-        memo[n] = result;
-        return result;
-    }
+    memo[n]   = n * memoized_fac(n - 1);
+
+    return memo[n];
+}
 }
