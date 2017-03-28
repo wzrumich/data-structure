@@ -22,7 +22,27 @@ using namespace std;
  */
 vector<StringTriple> cartalk_puzzle(PronounceDict d,
                                     const string& word_list_fname)
-{
+{     vector<StringTriple> result;
+     ifstream words(word_list_fname);
+     string test;
+     if(words.is_open()){
+       while(getline(words,test)){
+         if(test.size()==5){
+           string s1=test.substr(1);
+           string s2=test.substr(0,1);
+           string s3=test.substr(2,test.length()-2);
+           s2.append(s3);
+           if(d.homophones(s1,s2)){
+             result.push_back(make_tuple(test,s1,s2));
+           }
+         }
+       }
+     }
+
+
+
+
+
     /* Your code goes here! */
-    return vector<StringTriple>();
+    return result;
 }

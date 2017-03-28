@@ -47,16 +47,36 @@ void CommonWords::init_file_word_maps(const vector<string>& filenames)
         // get the corresponding vector of words that represents the current
         // file
         vector<string> words = file_to_vector(filenames[i]);
+        for(size_t k=0; k<words.size(); k++){
+          string test = words[k];
+          auto lookup = file_word_maps[i].find(test);
+          if(lookup==file_word_maps[i].end()){
+            file_word_maps[i][test]=1;
+          }
+          else{
+            lookup->second++;
+          }
+        }
         /* Your code goes here! */
     }
 }
 
 void CommonWords::init_common()
 {
+    for(size_t i=0; i<file_word_maps.size(); i++){
+      for(auto & key_val : file_word_maps[i]){
+      auto lookup = common.find(key_val.first);
+      if(lookup==common.end()){
+        common[key_val.first]=1;
+      }
+      else{
+        lookup->second++;
+      }
+      }
+    }
     /* Your code goes here! */
 }
-
-/**
+/*
  * @param n The number of times to word has to appear.
  * @return A vector of strings. The vector contains all words that appear
  * in each file >= n times.
@@ -64,6 +84,23 @@ void CommonWords::init_common()
 vector<string> CommonWords::get_common_words(unsigned int n) const
 {
     vector<string> out;
+    for(auto & key_val : common){
+      if(key_val.second==file_word_maps.size()){
+        bool insert = true;
+        for(auto & search : file_word_maps){
+          if(search.find(key_val.first)->second<n){
+            insert = false;
+          }
+        }
+        if(insert){
+          out.push_back(key_val.first);
+        }
+      }
+    }
+
+
+
+
     /* Your code goes here! */
     return out;
 }
