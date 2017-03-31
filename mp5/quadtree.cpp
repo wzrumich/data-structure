@@ -312,5 +312,23 @@ int Quadtree::pruneCount(QuadtreeNode* subroot, int tolerance) const{
 }
 
 int Quadtree::idealPrune(int numLeaves) const{
-  return 0;
+if(root==NULL){return 0;}
+return tolerancefind(0 , 3*255*255, numLeaves);
+}
+
+int Quadtree::tolerancefind(int small, int big, int numLeaves)const{
+    if(small>big){
+      return small;
+    }
+    else{
+    int mid=(small+big)/2;
+    if(pruneSize(mid)<=numLeaves){
+      return       tolerancefind(small, mid-1, numLeaves);
+
+    }
+    else{
+      return tolerancefind(mid+1, big, numLeaves);
+    }
+  }
+
 }
