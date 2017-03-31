@@ -55,7 +55,9 @@ class Quadtree
       void build(QuadtreeNode * & subroot, int x, int y, int resolution,PNG const & source );
       RGBAPixel getpoint(QuadtreeNode* subroot, int x, int y, int resolution)const;
       void decom(QuadtreeNode* subroot, int x, int y, int resolution, PNG & source)const;
-
+      void rotatehelper(QuadtreeNode* subroot, int resolution);
+      void doprune( QuadtreeNode* & subroot, int tolerance);
+      bool isprune(QuadtreeNode* root, QuadtreeNode*  subroot, int tolerance);
 /**** Functions for testing/grading                      ****/
 /**** Do not remove this line or copy its contents here! ****/
 #include "quadtree_given.h"
