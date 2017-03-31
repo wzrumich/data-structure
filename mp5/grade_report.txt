@@ -1,68 +1,29 @@
-Grading r35991 by enx-cs225autograder committed on Wed Mar 29 01:35:24 CDT 2017
+Grading r37435 by zeruiw2 committed on Thu Mar 30 23:51:36 CDT 2017
 Monad Autograder
-Testing mp5 at 2017-03-30 01:33:04
+Testing mp5 at 2017-03-31 01:47:05
 
-"We don't have time to stop for gas, we're already late." ~ Mike Cleron
+"The primary purpose of the DATA statement is to give names to constants; instead of referring to pi as 3.141592653589793 at every appearance, the variable PI can be given that value with a DATA statement and used instead of the longer form of the constant. This also simplifies modifying the program, should the value of pi change." ~ FORTRAN manual for Xerox computers
 
 Setting up test environment...
 Compiling...
 ================================================================
+quadtree.cpp:296:3: error: use of undeclared identifier 'pruneCount'
+  pruneCount()
+  ^
+quadtree.cpp:299:15: error: out-of-line definition of 'pruneCount' does not match any declaration in 'Quadtree'
+int Quadtree::pruneCount(QuadtreeNode* subroot, int tolerance){
+              ^~~~~~~~~~
+2 errors generated.
+make: *** [quadtree.o] Error 1
+make: *** Waiting for unfinished jobs....
 
 
 Running tests...
 ================================================================
-test_default_ctor  . . . . [1 pts] - passed
-test_ctor_1  . . . . . . . [1 pts] - passed
-test_ctor_2  . . . . . . . [2 pts] - passed
-test_buildTree_1 . . . . . [2 pts] - passed
-test_buildTree_2 . . . . . [1 pts] - passed
-test_buildTree_3 . . . . . [2 pts] - passed
-test_cctor_1 . . . . . . . [1 pts] - passed
-test_cctor_2 . . . . . . . [1 pts] - passed
-test_cctor_3 . . . . . . . [1 pts] - passed
-test_cctor_4 . . . . . . . [1 pts] - passed
-test_assign_op_1 . . . . . [1 pts] - passed
-test_assign_op_2 . . . . . [1 pts] - passed
-test_assign_op_3 . . . . . [1 pts] - passed
-test_assign_op_4 . . . . . [1 pts] - passed
-test_getPixel_1  . . . . . [1 pts] - passed
-test_getPixel_2  . . . . . [2 pts] - passed
-test_getPixel_3  . . . . . [2 pts] - passed
-test_getPixel_4  . . . . . [2 pts] - passed
-test_decompress_unpruned_1 [1 pts] - passed
-test_decompress_unpruned_2 [1 pts] - passed
-test_decompress_unpruned_3 [1 pts] - passed
-test_decompress_unpruned_4 [1 pts] - passed
-time_getPixel_logn . . . . [4 pts] - passed
-time_decompress_n (asan) . [4 pts] - passed
-valgrind_big3 (asan) . . . [4 pts] - passed
-test_clockwiseRotate_1 . . [1 pts] - passed
-test_clockwiseRotate_2 . . [1 pts] - FAILED
-test_clockwiseRotate_3 . . [2 pts] - FAILED
-test_clockwiseRotate_4 . . [2 pts] - FAILED
-test_prune_1 . . . . . . . [2 pts] - passed
-test_prune_2 . . . . . . . [3 pts] - FAILED
-test_prune_3 . . . . . . . [2 pts] - FAILED
-test_prune_4 . . . . . . . [5 pts] - FAILED
-test_prune_copy  . . . . . [2 pts] - passed
-test_prune_rotate  . . . . [2 pts] - FAILED
-test_prune_getPixel  . . . [3 pts] - FAILED
-test_pruneSize_1 . . . . . [2 pts] - passed
-test_pruneSize_2 . . . . . [2 pts] - FAILED
-test_pruneSize_3 . . . . . [2 pts] - FAILED
-test_pruneSize_4 . . . . . [2 pts] - FAILED
-test_pruneSize_5 . . . . . [2 pts] - FAILED
-test_idealPrune_1  . . . . [2 pts] - FAILED
-test_idealPrune_2  . . . . [3 pts] - FAILED
-test_idealPrune_3  . . . . [2 pts] - passed
-test_idealPrune_4  . . . . [5 pts] - FAILED
-val_clockwiseRotate (asan) [2 pts] - FAILED
-val_prune (asan) . . . . . [4 pts] - FAILED
-val_idealPrune (asan)  . . [3 pts] - FAILED
-test_const_correctness . . [4 pts] - passed
+Could not execute test cases
 
 
 Total score...
 ================================================================
-TOTAL SCORE: 53
+TOTAL SCORE: 0
 
