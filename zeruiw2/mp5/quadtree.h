@@ -58,6 +58,7 @@ class Quadtree
       void rotatehelper(QuadtreeNode* subroot, int resolution);
       void doprune( QuadtreeNode* & subroot, int tolerance);
       bool isprune(QuadtreeNode* root, QuadtreeNode*  subroot, int tolerance) const;
+      int tolerancefind(int small, int big, int numLeaves) const;
       int  pruneCount(QuadtreeNode* subroot, int tolerance) const;
 /**** Functions for testing/grading                      ****/
 /**** Do not remove this line or copy its contents here! ****/
