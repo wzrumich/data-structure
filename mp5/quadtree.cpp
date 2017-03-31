@@ -216,15 +216,93 @@ decom(subroot->seChild,2*x+1,2*y+1,resolution,source);
 }
 
 void Quadtree::clockwiseRotate(){
-  return ;
+
+rotatehelper(root,resolution);
+}
+
+void Quadtree::rotatehelper(QuadtreeNode* subroot, int resolution){
+  if(subroot->nwChild==NULL||resolution<1){}
+  else{
+    QuadtreeNode* temp1 = new QuadtreeNode();
+    temp1=subroot->nwChild;
+    QuadtreeNode* temp2 = new QuadtreeNode();
+    temp2=subroot->neChild;
+    QuadtreeNode* temp3 = new QuadtreeNode();
+    temp3=subroot->swChild;
+    QuadtreeNode* temp4 = new QuadtreeNode();
+    temp4=subroot->seChild;
+    subroot->nwChild=temp3;
+    subroot->neChild=temp1;
+    subroot->swChild=temp4;
+    subroot->seChild=temp2;
+    resolution=resolution/2;
+    rotatehelper(subroot->nwChild,resolution);
+    rotatehelper(subroot->neChild,resolution);
+    rotatehelper(subroot->swChild,resolution);
+    rotatehelper(subroot->seChild,resolution);
+  }
 }
 
 void Quadtree::prune(int tolerance){
-  return;
+
+     doprune(root,tolerance);
 }
+//clear the root after chek
+void Quadtree::doprune( QuadtreeNode* & subroot, int tolerance){
+    if(subroot==NULL||subroot->nwChild==NULL){return;}
+    if(isprune(subroot,subroot,tolerance)){
+      clear(subroot->nwChild);
+      clear(subroot->neChild);
+      clear(subroot->swChild);
+      clear(subroot->seChild);
+      subroot->nwChild=NULL;
+      subroot->neChild=NULL;
+      subroot->swChild=NULL;
+      subroot->seChild=NULL;
+    }
+    else{
+      doprune(subroot->nwChild,tolerance);
+      doprune(subroot->neChild,tolerance);
+      doprune(subroot->swChild,tolerance);
+      doprune(subroot->seChild,tolerance);
+    }
+}
+//check whether there is one childen in  four children of the root differ more than the tolerance
+bool Quadtree::isprune(QuadtreeNode* root, QuadtreeNode* subroot, int tolerance) {
+    if(subroot==NULL){
+      return  false;
+    }
+    if(subroot->nwChild==NULL){
+     int diff =(root->element.red-subroot->element.red)*(root->element.red-subroot->element.red)+
+    (root->element.green-subroot->element.green)*(root->element.green-subroot->element.green)+
+    (root->element.blue-subroot->element.blue)*(root->element.blue-subroot->element.blue);
+     if(diff<=tolerance)
+    {
+      return true;
+    }
+    else   return false;
+    }
+    else {
+      return isprune(root,subroot->nwChild,tolerance)&&isprune(root,subroot->neChild,tolerance)&&
+      isprune(root,subroot->swChild,tolerance)&&isprune(root,subroot->seChild,tolerance);
+    }
+
+
+  }
+
+
 
 int Quadtree::pruneSize(int tolerance) const{
-  return 0;
+  pruneCount()
+
+}
+int Quadtree::pruneCount(QuadtreeNode* subroot, int tolerance){
+  if(subroot==NULL){
+    return 0;
+  }
+  if(isprune(subroot,subroot,tolerance)){
+    
+  }
 }
 
 int Quadtree::idealPrune(int numLeaves) const{
