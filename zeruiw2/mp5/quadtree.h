@@ -57,7 +57,8 @@ class Quadtree
       void decom(QuadtreeNode* subroot, int x, int y, int resolution, PNG & source)const;
       void rotatehelper(QuadtreeNode* subroot, int resolution);
       void doprune( QuadtreeNode* & subroot, int tolerance);
-      bool isprune(QuadtreeNode* root, QuadtreeNode*  subroot, int tolerance);
+      bool isprune(QuadtreeNode* root, QuadtreeNode*  subroot, int tolerance) const;
+      int  pruneCount(QuadtreeNode* subroot, int tolerance) const;
 /**** Functions for testing/grading                      ****/
 /**** Do not remove this line or copy its contents here! ****/
 #include "quadtree_given.h"
