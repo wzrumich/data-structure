@@ -268,7 +268,7 @@ void Quadtree::doprune( QuadtreeNode* & subroot, int tolerance){
     }
 }
 //check whether there is one childen in  four children of the root differ more than the tolerance
-bool Quadtree::isprune(QuadtreeNode* root, QuadtreeNode* subroot, int tolerance) {
+bool Quadtree::isprune(QuadtreeNode* root, QuadtreeNode* subroot, int tolerance) const{
     if(subroot==NULL){
       return  false;
     }
@@ -293,16 +293,22 @@ bool Quadtree::isprune(QuadtreeNode* root, QuadtreeNode* subroot, int tolerance)
 
 
 int Quadtree::pruneSize(int tolerance) const{
-  pruneCount()
+
+return   pruneCount(root,tolerance);
 
 }
-int Quadtree::pruneCount(QuadtreeNode* subroot, int tolerance){
+int Quadtree::pruneCount(QuadtreeNode* subroot, int tolerance) const{
   if(subroot==NULL){
     return 0;
   }
-  if(isprune(subroot,subroot,tolerance)){
-    
+  else  if(isprune(subroot,subroot,tolerance)){
+    return 1;
   }
+  else if(subroot->nwChild==NULL){
+    return 1;
+  }
+  else return pruneCount(subroot->nwChild,tolerance)+pruneCount(subroot->neChild, tolerance)+
+  pruneCount(subroot->swChild, tolerance)+pruneCount(subroot->seChild, tolerance);
 }
 
 int Quadtree::idealPrune(int numLeaves) const{
