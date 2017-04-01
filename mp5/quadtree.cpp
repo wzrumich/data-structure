@@ -193,9 +193,10 @@ decom(root,0,0,resolution,source);
   return source;
 }
 }
-
+//helper
 void Quadtree::decom(QuadtreeNode* subroot, int x, int y, int resolution, PNG & source)const{
   if(subroot==NULL){}
+  //when it reaches leaves
   if(subroot->nwChild==NULL||resolution<=1){
     for(int i=0; i<resolution ; i++){
       for(int j=0; j<resolution ; j++){
@@ -205,6 +206,7 @@ void Quadtree::decom(QuadtreeNode* subroot, int x, int y, int resolution, PNG & 
   }
   else {
     resolution=resolution/2;
+
 decom(subroot->nwChild,2*x,2*y,resolution,source);
 decom(subroot->neChild,2*x+1,2*y,resolution,source);
 decom(subroot->swChild,2*x,2*y+1,resolution,source);
@@ -215,11 +217,12 @@ decom(subroot->seChild,2*x+1,2*y+1,resolution,source);
   }
 }
 
+//clockwiseRotate rotates the Quadtree object’s underlying image clockwise by 90 degrees.
 void Quadtree::clockwiseRotate(){
 
 rotatehelper(root,resolution);
 }
-
+//rotatehelper
 void Quadtree::rotatehelper(QuadtreeNode* subroot, int resolution){
   if(subroot->nwChild==NULL||resolution<1){}
   else{
@@ -291,12 +294,15 @@ bool Quadtree::isprune(QuadtreeNode* root, QuadtreeNode* subroot, int tolerance)
   }
 
 
+// it returns a count of the total number of leaves the Quadtree would have if it were pruned as in the prune function.
+
 
 int Quadtree::pruneSize(int tolerance) const{
 
 return   pruneCount(root,tolerance);
 
 }
+//helper
 int Quadtree::pruneCount(QuadtreeNode* subroot, int tolerance) const{
   if(subroot==NULL){
     return 0;
@@ -310,12 +316,12 @@ int Quadtree::pruneCount(QuadtreeNode* subroot, int tolerance) const{
   else return pruneCount(subroot->nwChild,tolerance)+pruneCount(subroot->neChild, tolerance)+
   pruneCount(subroot->swChild, tolerance)+pruneCount(subroot->seChild, tolerance);
 }
-
+//reverse of the pruneSize
 int Quadtree::idealPrune(int numLeaves) const{
 if(root==NULL){return 0;}
 return tolerancefind(0 , 3*255*255, numLeaves);
 }
-
+//helper function
 int Quadtree::tolerancefind(int small, int big, int numLeaves)const{
     if(small>big){
       return small;

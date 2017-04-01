@@ -55,7 +55,7 @@ class Quadtree
       void build(QuadtreeNode * & subroot, int x, int y, int resolution,PNG const & source );
       RGBAPixel getpoint(QuadtreeNode* subroot, int x, int y, int resolution)const;
       void decom(QuadtreeNode* subroot, int x, int y, int resolution, PNG & source)const;
-      void rotatehelper(QuadtreeNode* subroot, int resolution);
+     void rotatehelper(QuadtreeNode* subroot, int resolution);
       void doprune( QuadtreeNode* & subroot, int tolerance);
       bool isprune(QuadtreeNode* root, QuadtreeNode*  subroot, int tolerance) const;
       int tolerancefind(int small, int big, int numLeaves) const;
