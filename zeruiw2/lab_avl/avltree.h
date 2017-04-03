@@ -105,6 +105,7 @@ class AVLTree
      * Prints the AVLTree to a stream.
      * @param out The stream to print to (default is stdout)
      */
+    void update(Node*& subtree );
     void print(ostream& out = cout) const;
 
     /**
@@ -112,7 +113,7 @@ class AVLTree
      * @param newOut The stream to print to
      */
     void setOutput(ostream& newOut);
-
+       Node*& rightmost(Node*& subtree);
   private:
     /**
      * The root of the tree.
