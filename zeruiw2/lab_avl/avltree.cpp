@@ -34,6 +34,7 @@ void AVLTree<K, V>::rotateLeft(Node*& t)
     Node * y  = t->right;
     t->right = y->left;
     y->left =   t;
+    update(t);
     t=y;
     update(t);
 
@@ -58,6 +59,7 @@ void AVLTree<K, V>::rotateRight(Node*& t)
     Node * y= t->left;
     t->left = y->right;
     y->right=t;
+    update(t);
     t=y;
     update(t);
 }
@@ -75,7 +77,7 @@ void AVLTree<K, V>::rotateRightLeft(Node*& t)
 template <class K, class V>
 void AVLTree<K, V>::rebalance(Node*& subtree)
 {
-     if(subtree==NULL){}
+  if(subtree==NULL){}
 
      else if((heightOrNeg1(subtree->left)-heightOrNeg1(subtree->right))==2){
     if(subtree->right==NULL){
@@ -92,7 +94,6 @@ void AVLTree<K, V>::rebalance(Node*& subtree)
      }
      else if((heightOrNeg1(subtree->right)-heightOrNeg1(subtree->left))==2){
      if(subtree->left==NULL){
-       
      }
       Node* tempR = subtree->right;
       if((heightOrNeg1(tempR->left)-heightOrNeg1(tempR->right))==-1){
@@ -102,7 +103,9 @@ void AVLTree<K, V>::rebalance(Node*& subtree)
         rotateRightLeft(subtree);
       }
      }
-   update(subtree);
+
+
+
     // your code here
 }
 
@@ -140,16 +143,15 @@ if(subtree==NULL){return;}
   subtree->height=0;
 }
 else if(subtree->left==NULL&&subtree->right!=NULL){
-   update(subtree->right);
+
   subtree->height = 1+subtree->right->height;
 }
 else if(subtree->right==NULL&&subtree->left!=NULL){
-   update(subtree->left);
+
   subtree->height = 1+subtree->left->height;
 }
 else {
-  update(subtree->left);
-  update(subtree->right);
+
   subtree->height = 1+ max(subtree->left->height, subtree->right->height);
 }
 
