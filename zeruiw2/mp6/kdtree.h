@@ -236,10 +236,13 @@ class KDTree
     /** This is your KDTree representation. Modify this vector to create a
      * KDTree. */
     vector<Point<Dim>> points;
-
+   int findhelper(const Point<Dim>& query, const vector<Point<Dim>> & points  , int lower, int upper, int di)const;
     /** Helper function for grading */
     int getPrintData(int low, int high) const;
-
+    void KDTreebuild(std::vector<Point<Dim>> & Points, int left, int right, int di);
+    int partiton( vector<Point<Dim>>& Points, int left, int right, int di, int pivot);
+    void swap(std::vector<Point<Dim>> & Points,int a, int b);
+    void quickselect( vector<Point<Dim>>& Points, int di , int left, int right, int k);
     /** Helper function for grading */
     void printTree(int low, int high, std::vector<std::string>& output,
                    int left, int top, int width, int currd) const;
