@@ -348,12 +348,52 @@ class BTree
  * the sorted order of elements. If val occurs in elements, then this returns
  * the index of val in elements.
  */
+ template <class T, class C>
+  size_t inserthelper (std::vector<T>& elements, const C& val, size_t left, size_t right){
+   
+         size_t mid = (left + right )/2;
+         if(val>elements[mid]&&val<elements[mid+1]){
+           return mid+1;
+         }
+         if(elements[mid]==val){
+           return mid;
+         }
+         else if(elements[mid]>val){
+           return inserthelper(elements, val, left, mid-1);
+         }
+         else return inserthelper(elements, val , mid+1,right);
+
+  }
+
+
+
+
+
+
+
 template <class T, class C>
 size_t insertion_idx(const std::vector<T>& elements, const C& val)
 {
     /* TODO Your code goes here! */
-    return 5;
+
+     std::vector<T> search = elements;
+     size_t size= search.size();
+     if(size==0){
+       return 0;
+     }
+     else if (elements[0]>val){
+       return 0;
+     }
+     else if (elements[size-1]<val){
+       return size;
+     }
+     else if(elements[size-1]==val){
+       return size-1;
+     }
+    return inserthelper(search,val, 0,size-1);
+
 }
+
 
 #include "btree_given.cpp"
 #include "btree.cpp"
