@@ -1,0 +1,225 @@
+Grading r43279 by zeruiw2 committed on Sun Apr  9 17:52:26 CDT 2017
+Monad Autograder
+Testing lab_btree at 2017-04-10 01:22:22
+
+"Work's best done when the deadline is closer." ~ Chaitanya Datye
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_insertion_idx_emp  . . . [10 pts] - passed
+test_insertion_idx_small  . . [10 pts] - passed
+test_insertion_idx_logn . . . [10 pts] - FAILED: unit_tests.cpp:118: Runtime was larger than O(logn)
+test_btree3_small (asan)  . . [10 pts] - FAILED: Memory errors detected by ASAN
+test_btree3_large_seq . . . . [10 pts] - passed
+test_btree3_large_rand  . . . [10 pts] - passed
+test_btree64_large_seq  . . . [10 pts] - passed
+test_btree64_large_rand . . . [10 pts] - passed
+test_btree128_med_rand (asan) [10 pts] - FAILED: Memory errors detected by ASAN
+test_btree5_strings . . . . . [10 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 70
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+test_insertion_idx_logn [10 points]
+Result: FAILED: unit_tests.cpp:118: Runtime was larger than O(logn)
+Took 8144ms (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Input size 10: 454980 iterations in 1000 ms for an average of 2.19791 us per call
+Input size 100: 119250 iterations in 1000 ms for an average of 8.38617 us per call
+Input size 1000: 14480 iterations in 1000 ms for an average of 69.1022 us per call
+Input size 10000: 1490 iterations in 1005 ms for an average of 674.999 us per call
+Input size 100000: 150 iterations in 1023 ms for an average of 6822.54 us per call
+Fitting time: O(1)
+RMS Residual: 3066.19
+Fitting time: O(logn)
+RMS Residual: 1735.21
+Fitting time: O(n)
+RMS Residual: 3.34585
+Fitting time: O(nlogn)
+RMS Residual: 47.4041
+Fitting time: O(n^2)
+RMS Residual: 226.641
+Fitting time: O(n^3)
+RMS Residual: 249.666
+Fitting time: O(e^n)
+RMS Residual: -nan
+Fitting time: O(never)
+RMS Residual: -nan
+Detected best time: O(n)
+Best RMS Residual: 3.34585
+
+----------------------------------------------------------------
+test_btree3_small (run under asan) [10 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (5000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_btree3_small [worth 10 points, output below]
+=================================================================
+==2032==ERROR: AddressSanitizer: container-overflow on address 0x60300000ee68 at pc 0x000000701c97 bp 0x7ffcb9fdaf50 sp 0x7ffcb9fdaf48
+READ of size 4 at 0x60300000ee68 thread T0
+    #0 0x701c96 in BTree<int, int>::find(BTree<int, int>::BTreeNode const*, int const&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x701c96)
+    #1 0x66f50b in BTree<int, int>::find(int const&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66f50b)
+    #2 0x66bfcf in void verify_finds<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66bfcf)
+    #3 0x64e53b in proxy_test::test_btree3_small(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x64e53b)
+    #4 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #5 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #6 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #7 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #8 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #9 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #10 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #11 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #12 0x7f49cbcb7b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #13 0x4a4ef9 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4a4ef9)
+
+0x60300000ee68 is located 8 bytes inside of 32-byte region [0x60300000ee60,0x60300000ee80)
+allocated by thread T0 here:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6f8a6e in std::__1::__split_buffer<BTree<int, int>::DataPair, std::__1::allocator<BTree<int, int>::DataPair>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<BTree<int, int>::DataPair>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x6f8a6e)
+    #2 0x73919f in std::__1::vector<BTree<int, int>::DataPair, std::__1::allocator<BTree<int, int>::DataPair> >::reserve(unsigned long) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x73919f)
+    #3 0x7093b3 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7093b3)
+    #4 0x707b8d in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x707b8d)
+    #5 0x66b0a0 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66b0a0)
+    #6 0x64e521 in proxy_test::test_btree3_small(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x64e521)
+    #7 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #8 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #9 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #10 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #11 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #12 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #13 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #14 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #15 0x7f49cbcb7b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: container-overflow ??:0 BTree<int, int>::find(BTree<int, int>::BTreeNode const*, int const&) const
+Shadow bytes around the buggy address:
+  0x0c067fff9d70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9d80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c067fff9dc0: fa fa fa fa fa fa 00 fc fc fc fa fa 00[fc]fc fc
+  0x0c067fff9dd0: fa fa 00 fc fc fc fa fa 00 fc fc fc fa fa 00 00
+  0x0c067fff9de0: fc fc fa fa 00 fc fc fc fa fa 00 fc fc fc fa fa
+  0x0c067fff9df0: fd fd fd fd fa fa 00 00 00 fa fa fa 00 00 00 fa
+  0x0c067fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==2032==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+test_btree128_med_rand (run under asan) [10 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (5500ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_btree128_med_rand [worth 10 points, output below]
+=================================================================
+==2075==ERROR: AddressSanitizer: container-overflow on address 0x619000546588 at pc 0x000000701c97 bp 0x7fff2c559250 sp 0x7fff2c559248
+READ of size 4 at 0x619000546588 thread T0
+    #0 0x701c96 in BTree<int, int>::find(BTree<int, int>::BTreeNode const*, int const&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x701c96)
+    #1 0x66f50b in BTree<int, int>::find(int const&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66f50b)
+    #2 0x66bfcf in void verify_finds<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66bfcf)
+    #3 0x652bd9 in proxy_test::test_btree128_med_rand(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x652bd9)
+    #4 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #5 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #6 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #7 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #8 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #9 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #10 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #11 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #12 0x7fc24a866b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #13 0x4a4ef9 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4a4ef9)
+
+0x619000546588 is located 8 bytes inside of 1032-byte region [0x619000546580,0x619000546988)
+allocated by thread T0 here:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6f8a6e in std::__1::__split_buffer<BTree<int, int>::DataPair, std::__1::allocator<BTree<int, int>::DataPair>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<BTree<int, int>::DataPair>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x6f8a6e)
+    #2 0x73919f in std::__1::vector<BTree<int, int>::DataPair, std::__1::allocator<BTree<int, int>::DataPair> >::reserve(unsigned long) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x73919f)
+    #3 0x7093b3 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7093b3)
+    #4 0x707b8d in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x707b8d)
+    #5 0x66b0a0 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66b0a0)
+    #6 0x652bbf in proxy_test::test_btree128_med_rand(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x652bbf)
+    #7 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #8 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #9 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #10 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #11 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #12 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #13 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #14 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #15 0x7fc24a866b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: container-overflow ??:0 BTree<int, int>::find(BTree<int, int>::BTreeNode const*, int const&) const
+Shadow bytes around the buggy address:
+  0x0c32800a0c60: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0c70: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0c80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0c90: fc fc fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c32800a0ca0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c32800a0cb0: 00[fc]fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0cc0: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0cd0: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0ce0: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0cf0: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+  0x0c32800a0d00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==2075==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 70
+
