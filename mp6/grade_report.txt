@@ -1,8 +1,8 @@
-Grading r44148 by enx-cs225autograder committed on Mon Apr 10 01:56:33 CDT 2017
+Grading r44253 by enx-cs225autograder committed on Tue Apr 11 00:38:04 CDT 2017
 Monad Autograder
-Testing mp6 at 2017-04-11 00:35:57
+Testing mp6 at 2017-04-12 00:37:54
 
-"We know about as much about software quality problems as they knew about the Black Plague in the 1600s. We've seen the victims' agonies and helped burn the corpses. We don't know what causes it; we don't really know if there is only one disease. We just suffer -- and keep pouring our sewage into our water supply." ~ Tom Van Vleck
+"Computer Science is no more about computers than astronomy is about telescopes." ~ E. Dijkstra
 
 Setting up test environment...
 Compiling...
