@@ -1,6 +1,44 @@
 Grading r44400 by zeruiw2 committed on Wed Apr 12 10:41:53 CDT 2017
-/bin/ld: monad.o: undefined reference to symbol '__cxa_free_exception@@CXXABI_1.3'
-/usr/lib64/libstdc++.so.6: error adding symbols: DSO missing from command line
-clang-3.5.real: error: linker command failed with exit code 1 (use -v to see invocation)
-make: *** [pure-monad] Error 1
-error: failed to compile monad from source
+Monad Autograder
+Testing mp6 at 2017-04-13 00:48:29
+
+"And I'm sitting there hallucinating a bird on my pillow from the benadryl and I think to myself ... 'I need to write a poem about Makefiles'." ~ Lisa Sproat
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testSmallerDimVal . . . . . [3 pts]  - passed
+testShouldReplace . . . . . [3 pts]  - passed
+testLinearCtor_1_10 . . . . [4 pts]  - passed
+testLinearCtor_3_31 . . . . [4 pts]  - passed
+testLinearCtor_2_14 . . . . [4 pts]  - passed
+testLinearNNS_1_10  . . . . [4 pts]  - passed
+testLinearNNS_3_31  . . . . [4 pts]  - passed
+testLinearNNS_2_14  . . . . [4 pts]  - passed
+testDeceptiveNNOneLevelCtor [4 pts]  - passed
+testDeceptiveNNOneLevelNNS  [3 pts]  - passed
+testMinesCtor . . . . . . . [3 pts]  - passed
+testMinesNNS  . . . . . . . [4 pts]  - passed
+testDeceptiveMinesCtor  . . [3 pts]  - passed
+testDeceptiveMinesNNS . . . [5 pts]  - passed
+testTieBreakingCtor . . . . [3 pts]  - passed
+testTieBreakingNNS  . . . . [3 pts]  - passed
+testLeftRecurseCtor . . . . [3 pts]  - passed
+testLeftRecurseNNS  . . . . [3 pts]  - passed
+testRandom1Ctor . . . . . . [3 pts]  - passed
+testRandom1NNS  . . . . . . [3 pts]  - passed
+testRandom2Ctor . . . . . . [3 pts]  - passed
+testRandom2NNS  . . . . . . [3 pts]  - passed
+testCheckeredMosaic . . . . [12 pts] - passed
+testPrimaryColorMosaic  . . [6 pts]  - passed
+testRandomMosaic  . . . . . [6 pts]  - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
