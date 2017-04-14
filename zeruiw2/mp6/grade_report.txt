@@ -1,8 +1,8 @@
-Grading r44400 by zeruiw2 committed on Wed Apr 12 10:41:53 CDT 2017
+Grading r44581 by enx-cs225autograder committed on Thu Apr 13 00:50:41 CDT 2017
 Monad Autograder
-Testing mp6 at 2017-04-13 00:48:29
+Testing mp6 at 2017-04-14 00:43:48
 
-"And I'm sitting there hallucinating a bird on my pillow from the benadryl and I think to myself ... 'I need to write a poem about Makefiles'." ~ Lisa Sproat
+"I think Microsoft named .NET so it wouldn't show up in a Unix directory listing." ~ Oktal
 
 Setting up test environment...
 Compiling...
