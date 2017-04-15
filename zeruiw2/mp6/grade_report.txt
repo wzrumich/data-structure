@@ -1,8 +1,8 @@
-Grading r44581 by enx-cs225autograder committed on Thu Apr 13 00:50:41 CDT 2017
+Grading r44874 by enx-cs225autograder committed on Fri Apr 14 00:46:25 CDT 2017
 Monad Autograder
-Testing mp6 at 2017-04-14 00:43:48
+Testing mp6 at 2017-04-15 00:37:36
 
-"I think Microsoft named .NET so it wouldn't show up in a Unix directory listing." ~ Oktal
+"Now that's just math for math's sake." ~ Prof. Julia Hockenmaier
 
 Setting up test environment...
 Compiling...
