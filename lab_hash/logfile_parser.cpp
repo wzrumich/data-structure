@@ -52,6 +52,7 @@ LogfileParser::LogfileParser(const string& fname) : whenVisitedTable(256)
     SCHashTable<string, bool> pageVisitedTable(256);
     ifstream infile(fname.c_str());
     string line;
+     std::map<string, bool> maps;
     while (infile.good()) {
         getline(infile, line);
 
@@ -61,7 +62,7 @@ LogfileParser::LogfileParser(const string& fname) : whenVisitedTable(256)
 
         // otherwise parse the line and update the hash tables and vector
         LogLine ll(line);
-       std::map<string, bool> maps;
+
         if(maps.find(ll.url)==maps.end()){
           maps[ll.url]=true;
           uniqueURLs.push_back(ll.url);
@@ -120,11 +121,9 @@ time_t LogfileParser::dateVisited(const string& customer,
     /**
      * @todo Implement this function.
      */
+     string test = customer + ":"+url;
+     return whenVisitedTable.find(test);
 
-    (void) customer; // prevent warnings... When you implement this function, remove this line.
-    (void) url;      // prevent warnings... When you implement this function, remove this line.
-
-    return time_t(); // replaceme
 }
 
 /**
