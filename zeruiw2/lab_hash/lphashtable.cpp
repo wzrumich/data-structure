@@ -88,6 +88,7 @@ void LPHashTable<K, V>::insert(K const& key, V const& value)
      elems++;
      size_t idx= hash(key,size);
      while(should_probe[idx]){
+
        idx = (idx+1)%size;
      }
      table[idx] = new pair<K , V>(key, value);

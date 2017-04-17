@@ -145,7 +145,6 @@ template <class K, class V>
 void SCHashTable<K, V>::resizeTable()
 {
     typename list<pair<K, V>>::iterator it;
-
     /**
      * @todo Implement this function.
      *
@@ -163,4 +162,5 @@ void SCHashTable<K, V>::resizeTable()
         }
       }
     }
+    *this=newhash;
 }
