@@ -9,7 +9,7 @@
 
 #include "logfile_parser.h"
 #include <iostream>
-
+#include <map>
 using std::string;
 using std::vector;
 using std::ifstream;
@@ -61,6 +61,16 @@ LogfileParser::LogfileParser(const string& fname) : whenVisitedTable(256)
 
         // otherwise parse the line and update the hash tables and vector
         LogLine ll(line);
+       std::map<string, bool> maps;
+        if(maps.find(ll.url)==maps.end()){
+          maps[ll.url]=true;
+          uniqueURLs.push_back(ll.url);
+        }
+
+        string test = ll.customer+":"+ll.url;
+        if(!whenVisitedTable.keyExists(test)||whenVisitedTable.find(test)<ll.date){
+          whenVisitedTable[test]=ll.date;
+        }
         /**
          * @todo Finish implementing this function.
          *
@@ -85,11 +95,13 @@ bool LogfileParser::hasVisited(const string& customer, const string& url) const
     /**
      * @todo Implement this function.
      */
+    string test = customer + ":" + url;
+    if(whenVisitedTable.keyExists(test)){
+      return true;
+    }
+    else  return false;
 
-    (void) customer; // prevent warnings... When you implement this function, remove this line.
-    (void) url;      // prevent warnings... When you implement this function, remove this line.
 
-    return true; // replaceme
 }
 
 /**
