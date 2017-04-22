@@ -1,0 +1,24 @@
+Grading r47923 by zeruiw2 committed on Thu Apr 20 20:55:36 CDT 2017
+Monad Autograder
+Testing mp7.1 at 2017-04-22 00:39:55
+
+"I just don't trust easily, and for good reasons... which are my own." ~ Carth Onasi
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+addElements1 . . . . [20 pts] - passed
+addElements2 . . . . [20 pts] - passed
+testFindAndSetUnion1 [20 pts] - passed
+testFindAndSetUnion2 [20 pts] - passed
+testFindAndSetUnion3 [20 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 100
+
