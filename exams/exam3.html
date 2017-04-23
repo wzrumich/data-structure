@@ -1,0 +1,1227 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>zeruiw2's feedback report for exam3</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Meat and Veggies</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>(Unanswered Question)</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">200</td>
+      <td>0.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Meat and Veggies&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="thesetup">The Setup</h4>
+<p>Consider a eatery where meals are brought out one-by-one (similar to dim sum,
+except each cart only has a single meal).  Each meal is represented by the
+class <code>Meal</code> and a pointer to each meal, a <code>Meal *</code>, is stored within a node
+of a singly linked list.</p>
+<p>Some meals contains only meat, some contain only vegetables, and some contain
+both meat and vegetables.  Each diner will select the first meal that matches
+their eating preference.</p>
+<h4 id="theproblem">The Problem</h4>
+<p>In the <code>List</code> class, complete the <code>chooseMeal</code> member function in <code>list.cpp</code>.
+The <code>chooseMeal</code> function must:</p>
+<ol>
+<li>find the meal closest to the head of the list that meets the given
+preferences (if a suitable meal exists),</li>
+<li>remove the node containing the meal from the list, and</li>
+<li>return a pointer to the meal (if a suitable meal was found) <strong>or</strong> <code>NULL</code> if no meal was found</li>
+</ol>
+<h4 id="reference">Reference</h4>
+<p>The <code>List</code> class (<code>list.cpp</code>, <code>list.h</code>) stores a singly linked list of <code>ListNode</code>
+nodes, using the same structure and variable names as MP3.</p>
+<p>The <code>Meal</code> class has a member functions <code>containsMeat()</code> and <code>containsVegetables()</code>
+that returned a <code>bool</code> based on if the meal contains meat and/or vegetables.</p>
+<h4 id="compileandtest">Compile and Test</h4>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./eatery-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      list.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#define _LIST_CPP
+#include &quot;list.h&quot;
+#include &quot;meal.h&quot;
+
+#include &lt;cstddef&gt;
+
+#include &lt;iostream&gt;
+using namespace std;
+
+
+//
+// In the &#x60;List&#x60; class, complete the &#x60;chooseMeal&#x60; member function in &#x60;list.cpp&#x60;.
+// The &#x60;grabFood&#x60; function must:
+//
+// 1. find the meal closest to the head of the list that meets the given
+//    preferences (if a suitable meal exists),
+// 2. remove the node containing the meal from the list, and
+// 3. return a pointer to the meal (if a suitable meal was found) **or** &#x60;NULL&#x60; if no meal was found
+//
+
+template &lt;class T&gt;
+const Meal *List&lt;T&gt;::chooseMeal(bool requireMeat, bool requireVegetables) {
+List&lt;Meal&gt;
+data&#x3D;(requireMeat&amp;&amp;requireVegetables);
+
+  if(head-&gt;data&#x3D;&#x3D; data){
+  ListNode* temp&#x3D;head-&gt;next;
+  ListNode*   tempre&#x3D;head;
+
+    head&#x3D;head-&gt;next;
+    return tempre;
+  }
+  ListNode* curr&#x3D;head;
+  ListNode* currn&#x3D;head-&gt;next;
+
+
+     while(currn!&#x3D;NULL){
+  if(currn-&gt;data&#x3D;&#x3D;data){
+ ListNode* del&#x3D;currn;
+  curr-&gt;next&#x3D;currn-&gt;next;
+
+  return del;
+  }
+  else
+   { curr&#x3D;currn;
+     currn&#x3D;currn-&gt;next;
+   }
+   if(curr&#x3D;&#x3D;NULL){
+     return NULL;
+   }
+
+
+  }
+
+}
+
+
+
+
+
+template &lt;class T&gt;
+List&lt;T&gt;::List() {
+  this-&gt;head &#x3D; NULL;
+}
+
+template &lt;class T&gt;
+void List&lt;T&gt;::insertFront(const T&amp; ndata) {
+  ListNode* node &#x3D; new ListNode(ndata);
+  node-&gt;next &#x3D; head;
+  this-&gt;head &#x3D; node;
+}
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ meal.cpp list.cpp eatery-test.cpp -std&#x3D;c++1y -lpng -lpthread -g -o eatery-test
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp: In instantiation of ‘const Meal* List&lt;T&gt;::chooseMeal(bool, bool) [with T &#x3D; Meal*]’:
+eatery-test.cpp:17:52:   required from here
+list.cpp:24:37: error: conversion from ‘bool’ to non-scalar type ‘List&lt;Meal&gt;’ requested
+ data&#x3D;(requireMeat&amp;&amp;requireVegetables);
+                                     ^
+list.cpp:26:16: error: no match for ‘operator&#x3D;&#x3D;’ (operand types are ‘Meal* const’ and ‘List&lt;Meal&gt;’)
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+list.cpp:26:16: note: candidates are:
+In file included from /usr/include/c++/4.8.2/map:62:0,
+                 from catch.hpp:4308,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_multimap.h:864:5: note: template&lt;class _Key, class _Tp, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;, const std::multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_multimap.h:864:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/map:61:0,
+                 from catch.hpp:4308,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_map.h:962:5: note: template&lt;class _Key, class _Tp, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::map&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;, const std::map&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const map&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_map.h:962:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::map&lt;_Key, _Tp, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/memory:82:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr.h:338:5: note: template&lt;class _Tp&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::shared_ptr&lt;_Tp1&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const shared_ptr&lt;_Tp&gt;&amp; __a) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr.h:338:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   cannot convert ‘((List&lt;Meal*&gt;*)this)-&gt;List&lt;Meal*&gt;::head-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/memory:82:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr.h:333:5: note: template&lt;class _Tp&gt; bool std::operator&#x3D;&#x3D;(const std::shared_ptr&lt;_Tp1&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const shared_ptr&lt;_Tp&gt;&amp; __a, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr.h:333:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::shared_ptr&lt;_Tp1&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/memory:82:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr.h:327:5: note: template&lt;class _Tp1, class _Tp2&gt; bool std::operator&#x3D;&#x3D;(const std::shared_ptr&lt;_Tp1&gt;&amp;, const std::shared_ptr&lt;_Tp2&gt;&amp;)
+     operator&#x3D;&#x3D;(const shared_ptr&lt;_Tp1&gt;&amp; __a,
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr.h:327:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::shared_ptr&lt;_Tp1&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/4.8.2/memory:82,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1040:5: note: template&lt;class _Tp, __gnu_cxx::_Lock_policy _Lp&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::__shared_ptr&lt;_Tp, _Lp&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const __shared_ptr&lt;_Tp, _Lp&gt;&amp; __a) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1040:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   cannot convert ‘((List&lt;Meal*&gt;*)this)-&gt;List&lt;Meal*&gt;::head-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/4.8.2/memory:82,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1035:5: note: template&lt;class _Tp, __gnu_cxx::_Lock_policy _Lp&gt; bool std::operator&#x3D;&#x3D;(const std::__shared_ptr&lt;_Tp, _Lp&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const __shared_ptr&lt;_Tp, _Lp&gt;&amp; __a, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1035:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::__shared_ptr&lt;_Tp, _Lp&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/4.8.2/memory:82,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1029:5: note: template&lt;class _Tp1, class _Tp2, __gnu_cxx::_Lock_policy _Lp&gt; bool std::operator&#x3D;&#x3D;(const std::__shared_ptr&lt;_Tp1, _Lp&gt;&amp;, const std::__shared_ptr&lt;_Tp2, _Lp&gt;&amp;)
+     operator&#x3D;&#x3D;(const __shared_ptr&lt;_Tp1, _Lp&gt;&amp; __a,
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1029:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::__shared_ptr&lt;_Tp1, _Lp&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/memory:81:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/unique_ptr.h:500:5: note: template&lt;class _Tp, class _Dp&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::unique_ptr&lt;_Tp, _Dp&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const unique_ptr&lt;_Tp, _Dp&gt;&amp; __x) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/unique_ptr.h:500:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   cannot convert ‘((List&lt;Meal*&gt;*)this)-&gt;List&lt;Meal*&gt;::head-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/memory:81:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/unique_ptr.h:495:5: note: template&lt;class _Tp, class _Dp&gt; bool std::operator&#x3D;&#x3D;(const std::unique_ptr&lt;_Tp, _Dp&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const unique_ptr&lt;_Tp, _Dp&gt;&amp; __x, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/unique_ptr.h:495:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::unique_ptr&lt;_Tp, _Dp&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/memory:81:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/unique_ptr.h:489:5: note: template&lt;class _Tp, class _Dp, class _Up, class _Ep&gt; bool std::operator&#x3D;&#x3D;(const std::unique_ptr&lt;_Tp, _Dp&gt;&amp;, const std::unique_ptr&lt;_Up, _Ep&gt;&amp;)
+     operator&#x3D;&#x3D;(const unique_ptr&lt;_Tp, _Dp&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/unique_ptr.h:489:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::unique_ptr&lt;_Tp, _Dp&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/set:62:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_multiset.h:739:5: note: template&lt;class _Key, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::multiset&lt;_Key, _Compare, _Alloc&gt;&amp;, const std::multiset&lt;_Key, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const multiset&lt;_Key, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_multiset.h:739:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::multiset&lt;_Key, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/set:61:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_set.h:754:5: note: template&lt;class _Key, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::set&lt;_Key, _Compare, _Alloc&gt;&amp;, const std::set&lt;_Key, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const set&lt;_Key, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_set.h:754:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::set&lt;_Key, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/set:60:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_tree.h:907:5: note: template&lt;class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::_Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;&amp;, const std::_Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const _Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_tree.h:907:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::_Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/set:60:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_tree.h:310:5: note: template&lt;class _Val&gt; bool std::operator&#x3D;&#x3D;(const std::_Rb_tree_iterator&lt;_Tp&gt;&amp;, const std::_Rb_tree_const_iterator&lt;_Val&gt;&amp;)
+     operator&#x3D;&#x3D;(const _Rb_tree_iterator&lt;_Val&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_tree.h:310:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::_Rb_tree_iterator&lt;_Tp&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/iterator:66:0,
+                 from catch.hpp:2427,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stream_iterator.h:130:5: note: template&lt;class _Tp, class _CharT, class _Traits, class _Dist&gt; bool std::operator&#x3D;&#x3D;(const std::istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;&amp;, const std::istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;&amp;)
+     operator&#x3D;&#x3D;(const istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stream_iterator.h:130:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algo.h:66:0,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/functional:2543:5: note: template&lt;class _Res, class ... _Args&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::function&lt;_Res(_ArgTypes ...)&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const function&lt;_Res(_Args...)&gt;&amp; __f) noexcept
+     ^
+/usr/include/c++/4.8.2/functional:2543:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   cannot convert ‘((List&lt;Meal*&gt;*)this)-&gt;List&lt;Meal*&gt;::head-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algo.h:66:0,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/functional:2537:5: note: template&lt;class _Res, class ... _Args&gt; bool std::operator&#x3D;&#x3D;(const std::function&lt;_Res(_ArgTypes ...)&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const function&lt;_Res(_Args...)&gt;&amp; __f, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/functional:2537:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::function&lt;_Res(_ArgTypes ...)&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/functional:55:0,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:66,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/tuple:813:5: note: template&lt;class ... _TElements, class ... _UElements&gt; constexpr bool std::operator&#x3D;&#x3D;(const std::tuple&lt;_Elements ...&gt;&amp;, const std::tuple&lt;_Elements ...&gt;&amp;)
+     operator&#x3D;&#x3D;(const tuple&lt;_TElements...&gt;&amp; __t,
+     ^
+/usr/include/c++/4.8.2/tuple:813:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::tuple&lt;_Elements ...&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/tuple:39:0,
+                 from /usr/include/c++/4.8.2/functional:55,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:66,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/array:228:5: note: template&lt;class _Tp, long unsigned int _Nm&gt; bool std::operator&#x3D;&#x3D;(const std::array&lt;_Tp, _Nm&gt;&amp;, const std::array&lt;_Tp, _Nm&gt;&amp;)
+     operator&#x3D;&#x3D;(const array&lt;_Tp, _Nm&gt;&amp; __one, const array&lt;_Tp, _Nm&gt;&amp; __two)
+     ^
+/usr/include/c++/4.8.2/array:228:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::array&lt;_Tp, _Nm&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/random:52:0,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:65,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/random.tcc:2030:5: note: template&lt;class _RealType1&gt; bool std::operator&#x3D;&#x3D;(const std::normal_distribution&lt;_RealType&gt;&amp;, const std::normal_distribution&lt;_RealType&gt;&amp;)
+     operator&#x3D;&#x3D;(const std::normal_distribution&lt;_RealType&gt;&amp; __d1,
+     ^
+/usr/include/c++/4.8.2/bits/random.tcc:2030:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::normal_distribution&lt;_RealType&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/vector:64:0,
+                 from /usr/include/c++/4.8.2/bits/random.h:34,
+                 from /usr/include/c++/4.8.2/random:50,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:65,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_vector.h:1404:5: note: template&lt;class _Tp, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::vector&lt;_Tp, _Alloc&gt;&amp;, const std::vector&lt;_Tp, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const vector&lt;_Tp, _Alloc&gt;&amp; __x, const vector&lt;_Tp, _Alloc&gt;&amp; __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_vector.h:1404:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::vector&lt;_Tp, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.8.2/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/streambuf_iterator.h:204:5: note: template&lt;class _CharT, class _Traits&gt; bool std::operator&#x3D;&#x3D;(const std::istreambuf_iterator&lt;_CharT, _Traits&gt;&amp;, const std::istreambuf_iterator&lt;_CharT, _Traits&gt;&amp;)
+     operator&#x3D;&#x3D;(const istreambuf_iterator&lt;_CharT, _Traits&gt;&amp; __a,
+     ^
+/usr/include/c++/4.8.2/bits/streambuf_iterator.h:204:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::istreambuf_iterator&lt;_CharT, _Traits&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2519:5: note: template&lt;class _CharT, class _Traits, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;, const _CharT*)
+     operator&#x3D;&#x3D;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2519:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2507:5: note: template&lt;class _CharT, class _Traits, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const _CharT*, const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2507:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   ‘List&lt;Meal&gt;’ is not derived from ‘const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2493:5: note: template&lt;class _CharT&gt; typename __gnu_cxx::__enable_if&lt;std::__is_char&lt;_Tp&gt;::__value, bool&gt;::__type std::operator&#x3D;&#x3D;(const std::basic_string&lt;_CharT&gt;&amp;, const std::basic_string&lt;_CharT&gt;&amp;)
+     operator&#x3D;&#x3D;(const basic_string&lt;_CharT&gt;&amp; __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2493:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::basic_string&lt;_CharT&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2486:5: note: template&lt;class _CharT, class _Traits, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;, const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2486:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/string:41:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/allocator.h:133:5: note: template&lt;class _Tp&gt; bool std::operator&#x3D;&#x3D;(const std::allocator&lt;_CharT&gt;&amp;, const std::allocator&lt;_CharT&gt;&amp;)
+     operator&#x3D;&#x3D;(const allocator&lt;_Tp&gt;&amp;, const allocator&lt;_Tp&gt;&amp;)
+     ^
+/usr/include/c++/4.8.2/bits/allocator.h:133:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::allocator&lt;_CharT&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/string:41:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/allocator.h:128:5: note: template&lt;class _T1, class _T2&gt; bool std::operator&#x3D;&#x3D;(const std::allocator&lt;_CharT&gt;&amp;, const std::allocator&lt;_T2&gt;&amp;)
+     operator&#x3D;&#x3D;(const allocator&lt;_T1&gt;&amp;, const allocator&lt;_T2&gt;&amp;)
+     ^
+/usr/include/c++/4.8.2/bits/allocator.h:128:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::allocator&lt;_CharT&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1037:5: note: template&lt;class _Iterator&gt; bool std::operator&#x3D;&#x3D;(const std::move_iterator&lt;_Iterator&gt;&amp;, const std::move_iterator&lt;_Iterator&gt;&amp;)
+     operator&#x3D;&#x3D;(const move_iterator&lt;_Iterator&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1037:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::move_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1031:5: note: template&lt;class _IteratorL, class _IteratorR&gt; bool std::operator&#x3D;&#x3D;(const std::move_iterator&lt;_Iterator&gt;&amp;, const std::move_iterator&lt;_IteratorR&gt;&amp;)
+     operator&#x3D;&#x3D;(const move_iterator&lt;_IteratorL&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1031:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::move_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:341:5: note: template&lt;class _IteratorL, class _IteratorR&gt; bool std::operator&#x3D;&#x3D;(const std::reverse_iterator&lt;_Iterator&gt;&amp;, const std::reverse_iterator&lt;_IteratorR&gt;&amp;)
+     operator&#x3D;&#x3D;(const reverse_iterator&lt;_IteratorL&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:341:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::reverse_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:291:5: note: template&lt;class _Iterator&gt; bool std::operator&#x3D;&#x3D;(const std::reverse_iterator&lt;_Iterator&gt;&amp;, const std::reverse_iterator&lt;_Iterator&gt;&amp;)
+     operator&#x3D;&#x3D;(const reverse_iterator&lt;_Iterator&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:291:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::reverse_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_pair.h:214:5: note: template&lt;class _T1, class _T2&gt; constexpr bool std::operator&#x3D;&#x3D;(const std::pair&lt;_T1, _T2&gt;&amp;, const std::pair&lt;_T1, _T2&gt;&amp;)
+     operator&#x3D;&#x3D;(const pair&lt;_T1, _T2&gt;&amp; __x, const pair&lt;_T1, _T2&gt;&amp; __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_pair.h:214:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::pair&lt;_T1, _T2&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+In file included from /usr/include/c++/4.8.2/iosfwd:40:0,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/postypes.h:216:5: note: template&lt;class _StateT&gt; bool std::operator&#x3D;&#x3D;(const std::fpos&lt;_StateT&gt;&amp;, const std::fpos&lt;_StateT&gt;&amp;)
+     operator&#x3D;&#x3D;(const fpos&lt;_StateT&gt;&amp; __lhs, const fpos&lt;_StateT&gt;&amp; __rhs)
+     ^
+/usr/include/c++/4.8.2/bits/postypes.h:216:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:26:16: note:   mismatched types ‘const std::fpos&lt;_StateT&gt;’ and ‘Meal* const’
+   if(head-&gt;data&#x3D;&#x3D; data){
+                ^
+list.cpp:31:12: error: cannot convert ‘List&lt;Meal*&gt;::ListNode*’ to ‘const Meal*’ in return
+     return tempre;
+            ^
+list.cpp:38:17: error: no match for ‘operator&#x3D;&#x3D;’ (operand types are ‘Meal* const’ and ‘List&lt;Meal&gt;’)
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+list.cpp:38:17: note: candidates are:
+In file included from /usr/include/c++/4.8.2/map:62:0,
+                 from catch.hpp:4308,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_multimap.h:864:5: note: template&lt;class _Key, class _Tp, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;, const std::multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_multimap.h:864:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::multimap&lt;_Key, _Tp, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/map:61:0,
+                 from catch.hpp:4308,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_map.h:962:5: note: template&lt;class _Key, class _Tp, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::map&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;, const std::map&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const map&lt;_Key, _Tp, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_map.h:962:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::map&lt;_Key, _Tp, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/memory:82:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr.h:338:5: note: template&lt;class _Tp&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::shared_ptr&lt;_Tp1&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const shared_ptr&lt;_Tp&gt;&amp; __a) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr.h:338:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   cannot convert ‘currn-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/memory:82:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr.h:333:5: note: template&lt;class _Tp&gt; bool std::operator&#x3D;&#x3D;(const std::shared_ptr&lt;_Tp1&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const shared_ptr&lt;_Tp&gt;&amp; __a, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr.h:333:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::shared_ptr&lt;_Tp1&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/memory:82:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr.h:327:5: note: template&lt;class _Tp1, class _Tp2&gt; bool std::operator&#x3D;&#x3D;(const std::shared_ptr&lt;_Tp1&gt;&amp;, const std::shared_ptr&lt;_Tp2&gt;&amp;)
+     operator&#x3D;&#x3D;(const shared_ptr&lt;_Tp1&gt;&amp; __a,
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr.h:327:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::shared_ptr&lt;_Tp1&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/4.8.2/memory:82,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1040:5: note: template&lt;class _Tp, __gnu_cxx::_Lock_policy _Lp&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::__shared_ptr&lt;_Tp, _Lp&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const __shared_ptr&lt;_Tp, _Lp&gt;&amp; __a) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1040:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   cannot convert ‘currn-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/4.8.2/memory:82,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1035:5: note: template&lt;class _Tp, __gnu_cxx::_Lock_policy _Lp&gt; bool std::operator&#x3D;&#x3D;(const std::__shared_ptr&lt;_Tp, _Lp&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const __shared_ptr&lt;_Tp, _Lp&gt;&amp; __a, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1035:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::__shared_ptr&lt;_Tp, _Lp&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/shared_ptr.h:52:0,
+                 from /usr/include/c++/4.8.2/memory:82,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1029:5: note: template&lt;class _Tp1, class _Tp2, __gnu_cxx::_Lock_policy _Lp&gt; bool std::operator&#x3D;&#x3D;(const std::__shared_ptr&lt;_Tp1, _Lp&gt;&amp;, const std::__shared_ptr&lt;_Tp2, _Lp&gt;&amp;)
+     operator&#x3D;&#x3D;(const __shared_ptr&lt;_Tp1, _Lp&gt;&amp; __a,
+     ^
+/usr/include/c++/4.8.2/bits/shared_ptr_base.h:1029:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::__shared_ptr&lt;_Tp1, _Lp&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/memory:81:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/unique_ptr.h:500:5: note: template&lt;class _Tp, class _Dp&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::unique_ptr&lt;_Tp, _Dp&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const unique_ptr&lt;_Tp, _Dp&gt;&amp; __x) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/unique_ptr.h:500:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   cannot convert ‘currn-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/memory:81:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/unique_ptr.h:495:5: note: template&lt;class _Tp, class _Dp&gt; bool std::operator&#x3D;&#x3D;(const std::unique_ptr&lt;_Tp, _Dp&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const unique_ptr&lt;_Tp, _Dp&gt;&amp; __x, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/bits/unique_ptr.h:495:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::unique_ptr&lt;_Tp, _Dp&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/memory:81:0,
+                 from catch.hpp:3798,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/unique_ptr.h:489:5: note: template&lt;class _Tp, class _Dp, class _Up, class _Ep&gt; bool std::operator&#x3D;&#x3D;(const std::unique_ptr&lt;_Tp, _Dp&gt;&amp;, const std::unique_ptr&lt;_Up, _Ep&gt;&amp;)
+     operator&#x3D;&#x3D;(const unique_ptr&lt;_Tp, _Dp&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/unique_ptr.h:489:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::unique_ptr&lt;_Tp, _Dp&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/set:62:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_multiset.h:739:5: note: template&lt;class _Key, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::multiset&lt;_Key, _Compare, _Alloc&gt;&amp;, const std::multiset&lt;_Key, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const multiset&lt;_Key, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_multiset.h:739:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::multiset&lt;_Key, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/set:61:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_set.h:754:5: note: template&lt;class _Key, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::set&lt;_Key, _Compare, _Alloc&gt;&amp;, const std::set&lt;_Key, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const set&lt;_Key, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_set.h:754:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::set&lt;_Key, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/set:60:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_tree.h:907:5: note: template&lt;class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::_Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;&amp;, const std::_Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const _Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_tree.h:907:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::_Rb_tree&lt;_Key, _Val, _KeyOfValue, _Compare, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/set:60:0,
+                 from catch.hpp:3131,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_tree.h:310:5: note: template&lt;class _Val&gt; bool std::operator&#x3D;&#x3D;(const std::_Rb_tree_iterator&lt;_Tp&gt;&amp;, const std::_Rb_tree_const_iterator&lt;_Val&gt;&amp;)
+     operator&#x3D;&#x3D;(const _Rb_tree_iterator&lt;_Val&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_tree.h:310:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::_Rb_tree_iterator&lt;_Tp&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/iterator:66:0,
+                 from catch.hpp:2427,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stream_iterator.h:130:5: note: template&lt;class _Tp, class _CharT, class _Traits, class _Dist&gt; bool std::operator&#x3D;&#x3D;(const std::istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;&amp;, const std::istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;&amp;)
+     operator&#x3D;&#x3D;(const istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stream_iterator.h:130:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::istream_iterator&lt;_Tp, _CharT, _Traits, _Dist&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algo.h:66:0,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/functional:2543:5: note: template&lt;class _Res, class ... _Args&gt; bool std::operator&#x3D;&#x3D;(std::nullptr_t, const std::function&lt;_Res(_ArgTypes ...)&gt;&amp;)
+     operator&#x3D;&#x3D;(nullptr_t, const function&lt;_Res(_Args...)&gt;&amp; __f) noexcept
+     ^
+/usr/include/c++/4.8.2/functional:2543:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   cannot convert ‘currn-&gt;List&lt;Meal*&gt;::ListNode::data’ (type ‘Meal* const’) to type ‘std::nullptr_t’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algo.h:66:0,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/functional:2537:5: note: template&lt;class _Res, class ... _Args&gt; bool std::operator&#x3D;&#x3D;(const std::function&lt;_Res(_ArgTypes ...)&gt;&amp;, std::nullptr_t)
+     operator&#x3D;&#x3D;(const function&lt;_Res(_Args...)&gt;&amp; __f, nullptr_t) noexcept
+     ^
+/usr/include/c++/4.8.2/functional:2537:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::function&lt;_Res(_ArgTypes ...)&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/functional:55:0,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:66,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/tuple:813:5: note: template&lt;class ... _TElements, class ... _UElements&gt; constexpr bool std::operator&#x3D;&#x3D;(const std::tuple&lt;_Elements ...&gt;&amp;, const std::tuple&lt;_Elements ...&gt;&amp;)
+     operator&#x3D;&#x3D;(const tuple&lt;_TElements...&gt;&amp; __t,
+     ^
+/usr/include/c++/4.8.2/tuple:813:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::tuple&lt;_Elements ...&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/tuple:39:0,
+                 from /usr/include/c++/4.8.2/functional:55,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:66,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/array:228:5: note: template&lt;class _Tp, long unsigned int _Nm&gt; bool std::operator&#x3D;&#x3D;(const std::array&lt;_Tp, _Nm&gt;&amp;, const std::array&lt;_Tp, _Nm&gt;&amp;)
+     operator&#x3D;&#x3D;(const array&lt;_Tp, _Nm&gt;&amp; __one, const array&lt;_Tp, _Nm&gt;&amp; __two)
+     ^
+/usr/include/c++/4.8.2/array:228:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::array&lt;_Tp, _Nm&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/random:52:0,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:65,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/random.tcc:2030:5: note: template&lt;class _RealType1&gt; bool std::operator&#x3D;&#x3D;(const std::normal_distribution&lt;_RealType&gt;&amp;, const std::normal_distribution&lt;_RealType&gt;&amp;)
+     operator&#x3D;&#x3D;(const std::normal_distribution&lt;_RealType&gt;&amp; __d1,
+     ^
+/usr/include/c++/4.8.2/bits/random.tcc:2030:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::normal_distribution&lt;_RealType&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/vector:64:0,
+                 from /usr/include/c++/4.8.2/bits/random.h:34,
+                 from /usr/include/c++/4.8.2/random:50,
+                 from /usr/include/c++/4.8.2/bits/stl_algo.h:65,
+                 from /usr/include/c++/4.8.2/algorithm:62,
+                 from catch.hpp:378,
+                 from eatery-test.cpp:10:
+/usr/include/c++/4.8.2/bits/stl_vector.h:1404:5: note: template&lt;class _Tp, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::vector&lt;_Tp, _Alloc&gt;&amp;, const std::vector&lt;_Tp, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const vector&lt;_Tp, _Alloc&gt;&amp; __x, const vector&lt;_Tp, _Alloc&gt;&amp; __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_vector.h:1404:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::vector&lt;_Tp, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/locale_facets.h:48:0,
+                 from /usr/include/c++/4.8.2/bits/basic_ios.h:37,
+                 from /usr/include/c++/4.8.2/ios:44,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/streambuf_iterator.h:204:5: note: template&lt;class _CharT, class _Traits&gt; bool std::operator&#x3D;&#x3D;(const std::istreambuf_iterator&lt;_CharT, _Traits&gt;&amp;, const std::istreambuf_iterator&lt;_CharT, _Traits&gt;&amp;)
+     operator&#x3D;&#x3D;(const istreambuf_iterator&lt;_CharT, _Traits&gt;&amp; __a,
+     ^
+/usr/include/c++/4.8.2/bits/streambuf_iterator.h:204:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::istreambuf_iterator&lt;_CharT, _Traits&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2519:5: note: template&lt;class _CharT, class _Traits, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;, const _CharT*)
+     operator&#x3D;&#x3D;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2519:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2507:5: note: template&lt;class _CharT, class _Traits, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const _CharT*, const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const _CharT* __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2507:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   ‘List&lt;Meal&gt;’ is not derived from ‘const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2493:5: note: template&lt;class _CharT&gt; typename __gnu_cxx::__enable_if&lt;std::__is_char&lt;_Tp&gt;::__value, bool&gt;::__type std::operator&#x3D;&#x3D;(const std::basic_string&lt;_CharT&gt;&amp;, const std::basic_string&lt;_CharT&gt;&amp;)
+     operator&#x3D;&#x3D;(const basic_string&lt;_CharT&gt;&amp; __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2493:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::basic_string&lt;_CharT&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/string:52:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/basic_string.h:2486:5: note: template&lt;class _CharT, class _Traits, class _Alloc&gt; bool std::operator&#x3D;&#x3D;(const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;, const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp;)
+     operator&#x3D;&#x3D;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,
+     ^
+/usr/include/c++/4.8.2/bits/basic_string.h:2486:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::basic_string&lt;_CharT, _Traits, _Alloc&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/string:41:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/allocator.h:133:5: note: template&lt;class _Tp&gt; bool std::operator&#x3D;&#x3D;(const std::allocator&lt;_CharT&gt;&amp;, const std::allocator&lt;_CharT&gt;&amp;)
+     operator&#x3D;&#x3D;(const allocator&lt;_Tp&gt;&amp;, const allocator&lt;_Tp&gt;&amp;)
+     ^
+/usr/include/c++/4.8.2/bits/allocator.h:133:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::allocator&lt;_CharT&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/string:41:0,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/allocator.h:128:5: note: template&lt;class _T1, class _T2&gt; bool std::operator&#x3D;&#x3D;(const std::allocator&lt;_CharT&gt;&amp;, const std::allocator&lt;_T2&gt;&amp;)
+     operator&#x3D;&#x3D;(const allocator&lt;_T1&gt;&amp;, const allocator&lt;_T2&gt;&amp;)
+     ^
+/usr/include/c++/4.8.2/bits/allocator.h:128:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::allocator&lt;_CharT&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1037:5: note: template&lt;class _Iterator&gt; bool std::operator&#x3D;&#x3D;(const std::move_iterator&lt;_Iterator&gt;&amp;, const std::move_iterator&lt;_Iterator&gt;&amp;)
+     operator&#x3D;&#x3D;(const move_iterator&lt;_Iterator&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1037:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::move_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1031:5: note: template&lt;class _IteratorL, class _IteratorR&gt; bool std::operator&#x3D;&#x3D;(const std::move_iterator&lt;_Iterator&gt;&amp;, const std::move_iterator&lt;_IteratorR&gt;&amp;)
+     operator&#x3D;&#x3D;(const move_iterator&lt;_IteratorL&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:1031:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::move_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:341:5: note: template&lt;class _IteratorL, class _IteratorR&gt; bool std::operator&#x3D;&#x3D;(const std::reverse_iterator&lt;_Iterator&gt;&amp;, const std::reverse_iterator&lt;_IteratorR&gt;&amp;)
+     operator&#x3D;&#x3D;(const reverse_iterator&lt;_IteratorL&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:341:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::reverse_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_iterator.h:291:5: note: template&lt;class _Iterator&gt; bool std::operator&#x3D;&#x3D;(const std::reverse_iterator&lt;_Iterator&gt;&amp;, const std::reverse_iterator&lt;_Iterator&gt;&amp;)
+     operator&#x3D;&#x3D;(const reverse_iterator&lt;_Iterator&gt;&amp; __x,
+     ^
+/usr/include/c++/4.8.2/bits/stl_iterator.h:291:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::reverse_iterator&lt;_Iterator&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/bits/stl_algobase.h:64:0,
+                 from /usr/include/c++/4.8.2/bits/char_traits.h:39,
+                 from /usr/include/c++/4.8.2/ios:40,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/stl_pair.h:214:5: note: template&lt;class _T1, class _T2&gt; constexpr bool std::operator&#x3D;&#x3D;(const std::pair&lt;_T1, _T2&gt;&amp;, const std::pair&lt;_T1, _T2&gt;&amp;)
+     operator&#x3D;&#x3D;(const pair&lt;_T1, _T2&gt;&amp; __x, const pair&lt;_T1, _T2&gt;&amp; __y)
+     ^
+/usr/include/c++/4.8.2/bits/stl_pair.h:214:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::pair&lt;_T1, _T2&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+In file included from /usr/include/c++/4.8.2/iosfwd:40:0,
+                 from /usr/include/c++/4.8.2/ios:38,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from eatery-test.cpp:1:
+/usr/include/c++/4.8.2/bits/postypes.h:216:5: note: template&lt;class _StateT&gt; bool std::operator&#x3D;&#x3D;(const std::fpos&lt;_StateT&gt;&amp;, const std::fpos&lt;_StateT&gt;&amp;)
+     operator&#x3D;&#x3D;(const fpos&lt;_StateT&gt;&amp; __lhs, const fpos&lt;_StateT&gt;&amp; __rhs)
+     ^
+/usr/include/c++/4.8.2/bits/postypes.h:216:5: note:   template argument deduction/substitution failed:
+In file included from list.h:28:0,
+                 from eatery-test.cpp:6:
+list.cpp:38:17: note:   mismatched types ‘const std::fpos&lt;_StateT&gt;’ and ‘Meal* const’
+   if(currn-&gt;data&#x3D;&#x3D;data){
+                 ^
+list.cpp:42:10: error: cannot convert ‘List&lt;Meal*&gt;::ListNode*’ to ‘const Meal*’ in return
+   return del;
+          ^
+make: *** [eatery-test] Error 1
+</pre>
+  </div>
+  <hr>
+  <h4>&quot;(Unanswered Question)&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    
+  </div>
+
+  <h5>File Submissions</h5>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>
