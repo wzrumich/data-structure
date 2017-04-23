@@ -1,0 +1,505 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>zeruiw2's feedback report for exam2</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Garden Constructor</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Adding Backpacks</td>
+      <td style="text-align: right;">50</td>
+      <td>/</td>
+      <td style="text-align: right;">100</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">50</td>
+      <td>/</td>
+      <td style="text-align: right;">200</td>
+      <td>25.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Garden Constructor&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h7 id="thesetup">The Setup</h7>
+<p>Consider a <code>garden</code> class that helps manage a garden of flowers (each flower
+is an instance of a <code>flower</code> class).  The <code>garden</code> class stores the flowers
+in a 4x4 grid (private variable <code>flower ** grid</code>).</p>
+<h7 id="theproblem">The Problem</h7>
+<p>In the class <code>garden</code>, create a constructor which takes one parameter,
+an array of flowers (<code>flower *</code>).  This constructor must:</p>
+<ul>
+<li>Allocate memory on the heap for <code>grid</code> to store the flower in a 4x4 grid.</li>
+<li>Store each <code>flower</code> in one position of the <code>grid</code> (there is no requirement on
+the position of each flower on the 4x4 grid, except that each flower must be
+in exactly one spot).</li>
+</ul>
+<p>You should assume that the input array will always contain exactly 16 flowers
+(one for each position).  You need only to write the constructor (you do not
+need to write all of the "big three").</p>
+<p>Your code must compile and work <em>without</em> modifying
+any of the other helper functions defined in the class (however, feel free
+to call them in your code!).</p>
+<h7 id="compileandtest">Compile and Test</h7>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./garden-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      garden.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &quot;flower.h&quot;
+#include &quot;garden.h&quot;
+
+
+ garden::garden(flower* test){
+      grid &#x3D; new flower*[4];
+  for(int j&#x3D;0; j&lt;4; j++){
+      grid[j]&#x3D;test;
+    for(int k&#x3D;0; k&lt;4; k++){
+      grid[j][k]&#x3D;new flower();
+    }
+  }
+}
+
+flower garden::getFlower(int row, int column) const {
+  return this-&gt;grid[row][column];
+}
+
+void garden::setFlower(int row, int column, const flower &amp;f) {
+  this-&gt;grid[row][column] &#x3D; f;
+}
+</pre>
+    </div>
+    <div>
+      garden.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _GARDEN_H
+#define _GARDEN_H
+
+#include &quot;flower.h&quot;
+
+class garden {
+public:
+  flower getFlower(int row, int column) const;
+  void setFlower(int row, int column, const flower &amp;f);
+  garden(flower* test);
+private:
+  flower **grid;
+};
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ flower.cpp -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ garden.cpp -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>garden.cpp: In constructor ‘garden::garden(flower*)’:
+garden.cpp:10:17: error: no match for ‘operator&#x3D;’ (operand types are ‘flower’ and ‘flower*’)
+       grid[j][k]&#x3D;new flower();
+                 ^
+garden.cpp:10:17: note: candidates are:
+In file included from garden.cpp:1:0:
+flower.h:7:7: note: flower&amp; flower::operator&#x3D;(const flower&amp;)
+ class flower {
+       ^
+flower.h:7:7: note:   no known conversion for argument 1 from ‘flower*’ to ‘const flower&amp;’
+flower.h:7:7: note: flower&amp; flower::operator&#x3D;(flower&amp;&amp;)
+flower.h:7:7: note:   no known conversion for argument 1 from ‘flower*’ to ‘flower&amp;&amp;’
+make: *** [garden.o] Error 1
+</pre>
+  </div>
+  <hr>
+  <h4>&quot;Adding Backpacks&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h7 id="thesetup">The Setup</h7>
+<p>Consider a <code>backpack</code> class that holds up to a fixed number of items.  The
+<code>backpack</code> class has three private variables:</p>
+<ul>
+<li><code>int size</code>, the maximum number of items that fits in the backpack.</li>
+<li><code>int items</code>, the current number of items in the backpack.  There must never
+be more items in the backpack than the size of the backpack (<code>items &lt;= size</code>).</li>
+<li><code>int *item_weights</code>, an array of the weights of the items currently in
+the backpack.  The length of the array will always be at least <code>items</code> length.</li>
+</ul>
+<h7 id="theproblem">The Problem</h7>
+<p>In the <code>backpack</code> class, overload the <code>+</code> (plus) operator to add two <code>backpack</code>
+classes.</p>
+<p>The result must be a <code>backpack</code> where:</p>
+<ul>
+<li>the result <code>size</code> is the sum of the <code>size</code> of each individual backpack, and</li>
+<li>the items (<code>items</code> and <code>item_weights</code>) in the result are the items from
+both backpacks</li>
+</ul>
+<p>Your code must compile and work <em>without</em> modifying any of the other helper
+functions defined in the class (however, feel free to call them in your code!).</p>
+<h7 id="compileandtest">Compile and Test</h7>
+<p>A complete Makefile and tester code is provided for you.  To compile and test,
+run:</p>
+<pre><code>make
+./backpack-test
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      backpack.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &quot;backpack.h&quot;
+
+//
+// In the &#x60;backpack&#x60; class, overload the &#x60;+&#x60; (plus) operator to add two
+// &#x60;backpack&#x60; classes.
+//
+// The result must be a &#x60;backpack&#x60; where:
+// - the result &#x60;size&#x60; is the sum of the &#x60;size&#x60; of each individual backpack, and
+// - the items (&#x60;items&#x60; and &#x60;item_weights&#x60;) in the result are the items from
+//  both backpacks
+//
+
+backpack::backpack(int size) : size(size), items(0) {
+  this-&gt;item_weights &#x3D; new int[size];
+}
+backpack backpack:: operator+(backpack const &amp;  other)
+{
+  int testsize&#x3D;this-&gt;getSize()+other.getSize();
+backpack result(testsize);
+
+int items&#x3D;this-&gt;getItemCount()+other.getItemCount();
+if(items&lt;size){
+  result.items&#x3D;items;
+}
+
+int itemweights&#x3D;*(this-&gt;getItems())+*(other.getItems());
+if(addItem(itemweights)){
+  *(result.item_weights)&#x3D;itemweights;
+}
+return result;
+
+}
+bool backpack::addItem(int weight) {
+  if (items &#x3D;&#x3D; size) {
+    // Cannot add if the backpack is full of items
+    return false;
+  } else {
+    // Otherwise, add the item
+    this-&gt;item_weights[this-&gt;items] &#x3D; weight;
+    this-&gt;items++;
+    return true;
+  }
+}
+
+int backpack::getSize() const {
+  return this-&gt;size;
+}
+
+int backpack::getItemCount() const {
+  return this-&gt;items;
+}
+
+const int *backpack::getItems() const {
+  return this-&gt;item_weights;
+}
+</pre>
+    </div>
+    <div>
+      backpack.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _BACKPACK_H
+#define _BACKPACK_H
+
+//
+// In the &#x60;backpack&#x60; class, overload the &#x60;+&#x60; (plus) operator to add two
+// &#x60;backpack&#x60; classes.
+//
+// The result must be a &#x60;backpack&#x60; where:
+// - the result &#x60;size&#x60; is the sum of the &#x60;size&#x60; of each individual backpack, and
+// - the items (&#x60;items&#x60; and &#x60;item_weights&#x60;) in the result are the items from
+//  both backpacks
+//
+
+class backpack {
+public:
+  backpack(int size);
+  backpack operator+(backpack const &amp; other);
+  int getSize() const;
+  int getItemCount() const;
+  const int *getItems() const;
+  bool addItem(int weight);
+
+private:
+  int size;
+  int items;
+  int *item_weights;
+};
+
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>backpack member functions after adding backpacks</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">25</td>
+      </tr>
+      <tr>
+        <td>add an empty backpack to a backpack</td>
+        <td style="text-align: right;">25</td>
+        <td>/</td>
+        <td style="text-align: right;">25</td>
+      </tr>
+      <tr>
+        <td>add backpack to an empty backpack</td>
+        <td style="text-align: right;">25</td>
+        <td>/</td>
+        <td style="text-align: right;">25</td>
+      </tr>
+      <tr>
+        <td>add two full backpacks together</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">25</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">50</td>
+        <td>/</td>
+        <td style="text-align: right;">100</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ backpack.cpp -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ backpack-test.cpp -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic
+g++ backpack.o backpack-test.o -std&#x3D;c++1y -lpng -lpthread -o catch-tester
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+catch-tester is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+backpack member functions after adding backpacks
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:63
+...............................................................................
+
+backpack-test.cpp:74: FAILED:
+  CHECK( c &#x3D;&#x3D; expected )
+with expansion:
+  {?} &#x3D;&#x3D; {?}
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 3 | 2 passed | 1 failed
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (3 assertions in 1 test case)
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+All tests passed (3 assertions in 1 test case)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+catch-tester is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  getItemCount() correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:142
+...............................................................................
+
+backpack-test.cpp:143: FAILED:
+  CHECK( c.getItemCount() &#x3D;&#x3D; 4 )
+with expansion:
+  0 &#x3D;&#x3D; 4
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:146
+...............................................................................
+
+backpack-test.cpp:152: FAILED:
+  CHECK( c &#x3D;&#x3D; expected )
+with expansion:
+  {?} &#x3D;&#x3D; {?}
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases: 1 | 1 failed
+assertions: 3 | 1 passed | 2 failed
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+catch-tester is a Catch v1.8.1 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+backpack member functions after adding backpacks
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:63
+...............................................................................
+
+backpack-test.cpp:74: FAILED:
+  CHECK( c &#x3D;&#x3D; expected )
+with expansion:
+  {?} &#x3D;&#x3D; {?}
+
+-------------------------------------------------------------------------------
+add an empty backpack to a backpack
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:96
+...............................................................................
+
+backpack-test.cpp:99: FAILED:
+  CHECK( c &#x3D;&#x3D; expected )
+with expansion:
+  {?} &#x3D;&#x3D; {?}
+
+-------------------------------------------------------------------------------
+add backpack to an empty backpack
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:120
+...............................................................................
+
+backpack-test.cpp:123: FAILED:
+  CHECK( c &#x3D;&#x3D; expected )
+with expansion:
+  {?} &#x3D;&#x3D; {?}
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  getItemCount() correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:142
+...............................................................................
+
+backpack-test.cpp:143: FAILED:
+  CHECK( c.getItemCount() &#x3D;&#x3D; 4 )
+with expansion:
+  0 &#x3D;&#x3D; 4
+
+-------------------------------------------------------------------------------
+add two full backpacks together
+  contents correct
+-------------------------------------------------------------------------------
+backpack-test.cpp:146
+...............................................................................
+
+backpack-test.cpp:152: FAILED:
+  CHECK( c &#x3D;&#x3D; expected )
+with expansion:
+  {?} &#x3D;&#x3D; {?}
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+test cases:  4 | 4 failed
+assertions: 12 | 7 passed | 5 failed
+
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>
