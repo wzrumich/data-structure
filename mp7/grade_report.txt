@@ -1,8 +1,8 @@
-Grading r48681 by enx-cs225autograder committed on Sat Apr 22 00:41:38 CDT 2017
+Grading r48942 by enx-cs225autograder committed on Sun Apr 23 01:38:59 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-23 01:34:08
+Testing mp7 at 2017-04-24 01:53:39
 
-"I would build pyramids, if I were Pharoah." ~ Kyle Johnson
+"Now that's just math for math's sake." ~ Prof. Julia Hockenmaier
 
 Setting up test environment...
 Compiling...
