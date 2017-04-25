@@ -1,8 +1,8 @@
-Grading r48942 by enx-cs225autograder committed on Sun Apr 23 01:38:59 CDT 2017
+Grading r49641 by enx-cs225autograder committed on Mon Apr 24 01:58:46 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-24 01:53:39
+Testing mp7 at 2017-04-25 01:42:08
 
-"Now that's just math for math's sake." ~ Prof. Julia Hockenmaier
+"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." ~ Antoine de Saint-Exupery
 
 Setting up test environment...
 Compiling...
