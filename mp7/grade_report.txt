@@ -1,8 +1,8 @@
-Grading r49641 by enx-cs225autograder committed on Mon Apr 24 01:58:46 CDT 2017
+Grading r49712 by enx-cs225autograder committed on Tue Apr 25 01:47:30 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-25 01:42:08
+Testing mp7 at 2017-04-26 01:44:25
 
-"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." ~ Antoine de Saint-Exupery
+"Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." ~ Brian Kernighan
 
 Setting up test environment...
 Compiling...
