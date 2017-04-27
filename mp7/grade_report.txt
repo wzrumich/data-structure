@@ -1,8 +1,8 @@
-Grading r49712 by enx-cs225autograder committed on Tue Apr 25 01:47:30 CDT 2017
+Grading r49774 by enx-cs225autograder committed on Wed Apr 26 01:50:43 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-26 01:44:25
+Testing mp7 at 2017-04-27 01:37:31
 
-"Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." ~ Brian Kernighan
+"Computer Science is no more about computers than astronomy is about telescopes." ~ E. Dijkstra
 
 Setting up test environment...
 Compiling...
