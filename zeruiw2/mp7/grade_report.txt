@@ -1,8 +1,8 @@
-Grading r50194 by enx-cs225autograder committed on Fri Apr 28 01:45:46 CDT 2017
+Grading r50573 by enx-cs225autograder committed on Sat Apr 29 01:43:57 CDT 2017
 Monad Autograder
-Testing mp7 at 2017-04-29 01:38:30
+Testing mp7 at 2017-04-30 01:40:34
 
-"Now that's just math for math's sake." ~ Prof. Julia Hockenmaier
+"I've seen many balls. Actually, let's do an example without balls." ~ Jack Toole
 
 Setting up test environment...
 Compiling...
