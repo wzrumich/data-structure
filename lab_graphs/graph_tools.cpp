@@ -4,9 +4,10 @@
  * Be sure to thoroughly read the comments above each function, as they give
  *  hints and instructions on how to solve the problems.
  */
-
+#include "edge.h"
 #include "graph_tools.h"
-
+#include <map>
+#include <vector>
 /**
  * Finds the minimum edge weight in the Graph graph.
  * THIS FUNCTION IS GRADED.
@@ -25,8 +26,16 @@
  */
 int GraphTools::findMinWeight(Graph& graph)
 {
+    vector<Edge> edgelist = graph.getEdges();
+    Edge edgemin = edgelist[0];
+    for(size_t i=0; i<edgelist.size(); i++){
+      if(edgelist[i]<edgemin){
+        edgemin=edgelist[i];
+      }
+    }
+    graph.setEdgeLabel(edgemin.source, edgemin.dest, "MIN");
     /* Your code here! */
-    return -1;
+    return edgemin.weight;
 }
 
 /**
@@ -53,7 +62,46 @@ int GraphTools::findMinWeight(Graph& graph)
 int GraphTools::findShortestPath(Graph& graph, Vertex start, Vertex end)
 {
     /* Your code here! */
-    return -1;
+    vector<Vertex> vertexlist = graph.getVertices();
+    for(size_t i=0; i<vertexlist.size(); i++){
+      graph.setVertexLabel(vertexlist[i], "Unexplored");
+    }
+    vector<Edge> edgelist = graph.getEdges();
+    for(size_t i=0; i<edgelist.size(); i++){
+      graph.setEdgeLabel(edgelist[i].source,edgelist[i].dest, "Unexplored" );
+    }
+    queue<Vertex> q;
+    std::map<Vertex, int> dist;
+    std::map<Vertex, Vertex> path;
+    Vertex next;
+    graph.setVertexLabel(start, "Visited");
+    q.push(start);
+    dist[start]=0;
+    while(!q.empty()){
+      next =q.front();
+      if(next ==end) break;
+
+    else {
+      vector<Vertex> adj = graph.getAdjacent(next);
+      q.pop();
+      for(size_t i=0; i<adj.size(); i++){
+        Vertex temp =adj[i];
+        if(graph.getVertexLabel(temp)=="Unexplored"){
+          q.push(temp);
+          dist[temp]= dist[next]+1;
+          graph.setVertexLabel(temp, "Visited");
+          path[temp] = next;
+        }
+      }
+    }
+  }
+  Vertex temp = next;
+  while(path[temp]!=start){
+    graph.setEdgeLabel(path[temp], temp, "MINPATH");
+    temp=path[temp];
+  }
+  graph.setEdgeLabel(start, temp, "MINPATH");
+  return dist[next];
 }
 
 /**
@@ -71,6 +119,28 @@ int GraphTools::findShortestPath(Graph& graph, Vertex start, Vertex end)
  */
 void GraphTools::findMST(Graph& graph)
 {
+    vector<Edge> edgelist = graph.getEdges();
+    vector<Vertex> vertrxlist = graph.getVertices();
+    std::sort(edgelist.begin(), edgelist.end());
+    DisjointSets disj;
+    std::map<Vertex, int> index;
+    disj.addelements((int)vertrxlist.size());
+    int count =0;
+    for(size_t i=0; i<edgelist.size()&&count<vertrxlist.size()-1; i++){
+     Vertex vsource = edgelist[i].source;
+     Vertex vdest = edgelist[i].dest;
+     if(disj.find(vsource)!=disj.find(vdest)){
+       disj.setunion(vsource, vdest);
+       graph.setEdgeLabel(vsource, vdest, "MST");
+       count++;
+          }
+
+    }
+
+
+
+
+
+
     /* Your code here! */
 }
-
