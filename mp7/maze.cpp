@@ -6,6 +6,8 @@
 #include <map>
 #include <queue>
 #include <sys/time.h>
+#include <algorithm>
+#include <cstdlib>
 SquareMaze::SquareMaze(){
 w=0;
 h=0;
@@ -17,8 +19,8 @@ rightlist.clear();
 downlist.clear();
 w = width;
 h = height;
-DisjointSets cell;
-cell.addelements(width*height);
+
+walls.addelements(width*height);
 //set all grid with walls
   std::vector<bool> v;
 for(int i=0; i<width; i++){
@@ -31,30 +33,31 @@ v.push_back(true);
 }
 //random delete wall w/o cycle
 srand (time(NULL));
-int randomdir, randomxc, randomyc = 0;
+int randomdir, randomxc, randomyc ;
 int loop = width*height-1;
 while(loop>0){
-  randomxc = rand() %w;
-  randomyc = rand() %h;
+  randomxc = rand()%w;
+  randomyc = rand()%h;
   //right or down
 randomdir = rand() %2;
 //right
-if(randomdir%2==0){
-  int index = w*randomyc+randomxc;
+
+if(randomdir==0){
+  int index = width*randomyc+randomxc;
   int move = index+1;
- if(cell.find(index)!=cell.find(move)&&randomxc!=w-1){
+ if(walls.find(index)!=walls.find(move)&&randomxc!=width-1){
   rightlist[randomxc][randomyc]= false;
-  cell.setunion(index, move);
+  walls.setunion(index, move);
   loop--;
 }
 }
 //down
-   else if(randomdir%2 ==1){
-  int index2 = randomyc+randomxc;
-  int move2 = w*(randomyc+1)+randomxc;
-  if(cell.find(index2)!=cell.find(move2)&&randomyc!=h-1){
+   else if(randomdir==1){
+  int index2 = width*randomyc+randomxc;
+  int move2 = width*(randomyc+1)+randomxc;
+  if(walls.find(index2)!=walls.find(move2)&&randomyc!=height-1){
     downlist[randomxc][randomyc] = false;
-    cell.setunion(index2, move2);
+    walls.setunion(index2, move2);
     loop--;
   }
 }
@@ -79,16 +82,16 @@ bool SquareMaze::canTravel(int x, int y, int dir) const{
 if(x<0||y<0||x>w||x>h||dir>3||dir<0)  return false;
 // rightward
 if(dir==0) {
-  return rightlist[x][y];
+  return !rightlist[x][y];
 }
 else if(dir == 1){
-  return downlist[x][y];
+  return !downlist[x][y];
 }
 else if(dir == 2){
-  return rightlist[x-1][y];
+  return !rightlist[x-1][y];
 }
 else if(dir ==3){
-  return downlist[x][y-1];
+  return !downlist[x][y-1];
 }
 
 return false;
