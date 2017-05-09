@@ -87,7 +87,8 @@ h5 {
       cube.cpp
     </div>
     <div>
-      <pre class="prettyprint linenums">#include &quot;cube.h&quot;
+      <pre class="prettyprint linenums">/* [zeruiw2] submission on PL at 2017-01-31T17:25:42-06*/
+#include &quot;cube.h&quot;
 
 
 cube::cube(){
@@ -123,7 +124,8 @@ return d*d*d;
       cube.h
     </div>
     <div>
-      <pre class="prettyprint linenums">#ifndef _CUBE_H
+      <pre class="prettyprint linenums">/* [zeruiw2] submission on PL at 2017-01-31T17:25:42-06*/
+#ifndef _CUBE_H
 #define _CUBE_H
 
 
@@ -169,19 +171,19 @@ private:
     </head>
     <tbody>
       <tr>
-        <td>default constructor</td>
+        <td>Default Constructor</td>
         <td style="text-align: right;">1</td>
         <td>/</td>
         <td style="text-align: right;">1</td>
       </tr>
       <tr>
-        <td>one parameter constructor</td>
+        <td>One parameter constructor (given test)</td>
         <td style="text-align: right;">1</td>
         <td>/</td>
         <td style="text-align: right;">1</td>
       </tr>
       <tr>
-        <td>use of type double</td>
+        <td>One parameter constructor (new test)</td>
         <td style="text-align: right;">1</td>
         <td>/</td>
         <td style="text-align: right;">1</td>
@@ -198,15 +200,14 @@ private:
   <h5>Raw Output</h5>
   <div>
     <div>stdout</div>
-    <pre style="border: solid 1px black";>g++ -g -O0 -Wall -Wextra main.cpp cube.cpp -o cube-tester
-Testing default constructor...
-+ PASS : (new cube())-&gt;getVolume &#x3D;&#x3D; 1
+    <pre style="border: solid 1px black";>clang++ -std&#x3D;c++0x -g -O0 -Wall -Wextra main.cpp cube.cpp -o cube-tester
+Passed 1 test case with 1 assertion.
 
-Testing one parameter constructor...
-+ PASS : (new cube(2))-&gt;getVolume &#x3D;&#x3D; 8
+Passed 1 test case with 1 assertion.
 
-Testing use of type double...
-+ PASS : (new cube(2.5))-&gt;getVolume &#x3D;&#x3D; 2.5 * 2.5 * 2.5
+Passed 1 test case with 1 assertion.
+
+Passed all 3 test cases with 3 assertions.
 
 </pre>
   </div>
@@ -228,7 +229,8 @@ Testing use of type double...
       main.cpp
     </div>
     <div>
-      <pre class="prettyprint linenums">#include &lt;algorithm&gt;
+      <pre class="prettyprint linenums">/* [zeruiw2] submission on PL at 2017-01-31T17:26:07-06*/
+#include &lt;algorithm&gt;
 #include &lt;iostream&gt;
 
 #include &quot;rgbapixel.h&quot;
@@ -306,10 +308,10 @@ int main() {
   <h5>Raw Output</h5>
   <div>
     <div>stdout</div>
-    <pre style="border: solid 1px black";>g++ -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic main.cpp
-g++ -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic png.cpp
-g++ -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic rgbapixel.cpp
-g++ main.o png.o rgbapixel.o -std&#x3D;c++1y -lpng -lpthread -o main
+    <pre style="border: solid 1px black";>clang++ -std&#x3D;c++1y -stdlib&#x3D;libc++ -c -g -O0 -Wall -Wextra -pedantic main.cpp
+clang++ -std&#x3D;c++1y -stdlib&#x3D;libc++ -c -g -O0 -Wall -Wextra -pedantic png.cpp
+clang++ -std&#x3D;c++1y -stdlib&#x3D;libc++ -c -g -O0 -Wall -Wextra -pedantic rgbapixel.cpp
+clang++ main.o png.o rgbapixel.o -std&#x3D;c++1y -stdlib&#x3D;libc++ -lpng -lc++abi -lpthread -o main
 </pre>
   </div>
   <div>
@@ -320,3 +322,4 @@ g++ main.o png.o rgbapixel.o -std&#x3D;c++1y -lpng -lpthread -o main
 </div>
 </body>
 </html>
+ 
