@@ -236,106 +236,19 @@ public:
   <div>
     <div>stdout</div>
     <pre style="border: solid 1px black";>g++ main.cpp tree.cpp -std&#x3D;c++1y -g -O0 -Wall -Wextra -pedantic -o main
-&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-All tests passed (6 assertions in 1 test case)
+Passed 1 test case with 6 assertions.
 
+main.cpp:86: failed: root-&gt;left-&gt;right-&gt;right !&#x3D; __null for: NULL !&#x3D; 0 with 5 messages: &#x27;Checking if the root of the tree is still &quot;1&quot; (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left-&gt;left (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left-&gt;right (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left-&gt;right-&gt;right (NULL check then value check)&#x27;
+main.cpp:45: failed: fatal error condition with message: &#x27;SIGSEGV - Segmentation violation signal&#x27;; expression was: {Unknown expression after the reported line}
+Failed 1 test case, failed 2 assertions.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main is a Catch v1.8.1 host application.
-Run with -? for options
+main.cpp:158: failed: root-&gt;left-&gt;right-&gt;left-&gt;right-&gt;right !&#x3D; __null for: NULL !&#x3D; 0 with 8 messages: &#x27;Checking if the root of the tree is still &quot;A&quot; (NULL check then value check)&#x27; and &#x27;Checking if [A]-&gt;left is &quot;B&quot; (NULL check then value check)&#x27; and &#x27;Checking if [A]-&gt;right is NULL&#x27; and &#x27;Checking if [A]-&gt;left-&gt;left is &quot;E&quot; (NULL check then value check)&#x27; and &#x27;Checking if [A]-&gt;left-&gt;right is &quot;C&quot; (NULL check then value check)&#x27; and &#x27;Checking if [A]-&gt;left-&gt;right-&gt;left is &quot;G&quot; (NULL check then value check)&#x27; and &#x27;Checking if [A]-&gt;left-&gt;right-&gt;left-&gt;right is &quot;H&quot; (NULL check then value check)&#x27; and &#x27;Checking if [A]-&gt;left-&gt;right-&gt;left-&gt;right-&gt;right is &quot;I&quot; (NULL check then value check)&#x27;
+main.cpp:99: failed: fatal error condition with message: &#x27;SIGSEGV - Segmentation violation signal&#x27;; expression was: {Unknown expression after the reported line}
+Failed 1 test case, failed 2 assertions.
 
--------------------------------------------------------------------------------
-Complex Tree Test (height&#x3D;2, m&#x3D;5)
--------------------------------------------------------------------------------
-main.cpp:45
-...............................................................................
-
-main.cpp:86: FAILED:
-  CHECK( root-&gt;left-&gt;right-&gt;right !&#x3D; __null )
-with expansion:
-  NULL !&#x3D; 0
-with messages:
-  Checking if the root of the tree is still &quot;1&quot; (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left-&gt;left (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left-&gt;right (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left-&gt;right-&gt;right (NULL check then value check)
-
-main.cpp:45: FAILED:
-  {Unknown expression after the reported line}
-due to a fatal error condition:
-  SIGSEGV - Segmentation violation signal
-
-&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-test cases:  1 | 1 failed
-assertions: 10 | 8 passed | 2 failed
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main is a Catch v1.8.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-Exam-provided Test
--------------------------------------------------------------------------------
-main.cpp:99
-...............................................................................
-
-main.cpp:158: FAILED:
-  CHECK( root-&gt;left-&gt;right-&gt;left-&gt;right-&gt;right !&#x3D; __null )
-with expansion:
-  NULL !&#x3D; 0
-with messages:
-  Checking if the root of the tree is still &quot;A&quot; (NULL check then value check)
-  Checking if [A]-&gt;left is &quot;B&quot; (NULL check then value check)
-  Checking if [A]-&gt;right is NULL
-  Checking if [A]-&gt;left-&gt;left is &quot;E&quot; (NULL check then value check)
-  Checking if [A]-&gt;left-&gt;right is &quot;C&quot; (NULL check then value check)
-  Checking if [A]-&gt;left-&gt;right-&gt;left is &quot;G&quot; (NULL check then value check)
-  Checking if [A]-&gt;left-&gt;right-&gt;left-&gt;right is &quot;H&quot; (NULL check then value
-  check)
-  Checking if [A]-&gt;left-&gt;right-&gt;left-&gt;right-&gt;right is &quot;I&quot; (NULL check then
-  value check)
-
-main.cpp:99: FAILED:
-  {Unknown expression after the reported line}
-due to a fatal error condition:
-  SIGSEGV - Segmentation violation signal
-
-&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-test cases:  1 |  0 passed | 1 failed
-assertions: 15 | 13 passed | 2 failed
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main is a Catch v1.8.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-Complex Tree Test (height&#x3D;2, m&#x3D;5)
--------------------------------------------------------------------------------
-main.cpp:45
-...............................................................................
-
-main.cpp:86: FAILED:
-  CHECK( root-&gt;left-&gt;right-&gt;right !&#x3D; __null )
-with expansion:
-  NULL !&#x3D; 0
-with messages:
-  Checking if the root of the tree is still &quot;1&quot; (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left-&gt;left (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left-&gt;right (NULL check then value check)
-  Checking [&quot;1&quot;]-&gt;left-&gt;right-&gt;right (NULL check then value check)
-
-main.cpp:45: FAILED:
-  {Unknown expression after the reported line}
-due to a fatal error condition:
-  SIGSEGV - Segmentation violation signal
-
-&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-test cases:  2 |  1 passed | 1 failed
-assertions: 16 | 14 passed | 2 failed
+main.cpp:86: failed: root-&gt;left-&gt;right-&gt;right !&#x3D; __null for: NULL !&#x3D; 0 with 5 messages: &#x27;Checking if the root of the tree is still &quot;1&quot; (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left-&gt;left (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left-&gt;right (NULL check then value check)&#x27; and &#x27;Checking [&quot;1&quot;]-&gt;left-&gt;right-&gt;right (NULL check then value check)&#x27;
+main.cpp:45: failed: fatal error condition with message: &#x27;SIGSEGV - Segmentation violation signal&#x27;; expression was: {Unknown expression after the reported line}
+Failed 1 test case, failed 2 assertions.
 
 </pre>
   </div>
@@ -347,3 +260,4 @@ assertions: 16 | 14 passed | 2 failed
 </div>
 </body>
 </html>
+ 
